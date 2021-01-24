@@ -1,0 +1,49 @@
+% ------------------------------------------------------------------------
+% contents/frontmatter/contents.tex
+%
+% Print all lists of contents.
+% ------------------------------------------------------------------------
+
+% Force to start on a new page unconditionally.
+\clearpage
+
+% Apply the customised page style.
+\pagestyle{publisher}
+
+% Add bookmark as well as hyperlink target.
+\hypertarget{toc}{}
+\bookmark[dest=toc]{\contentsname}
+
+% Issue ToC.
+\tableofcontents*
+
+% Force to clear the page unconditionally.
+\clearpage
+
+% Issue LoT.
+\listoftables
+
+% Force to clear the page unconditionally.
+\clearpage
+
+% Issue LoF.
+\listoffigures
+
+% Force to clear the page unconditionally.
+\clearpage
+
+\glsaddall  % add all glossary entries whether or not they are referred
+            % to in text; for demo purpose only, remove as necessary
+
+\printglossary[
+    type=abbreviations,
+    style=abbrstyle,
+    nogroupskip=true,
+    title={Abbreviations}
+]
+\printglossary[
+    type=symbols,
+    style=symbstyle,
+    nogroupskip=true,
+    title={Notations}
+]

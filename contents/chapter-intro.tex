@@ -1,0 +1,78 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+\kant*[4][1-2]
+\begin{itemize}
+    \item \kant*[5][1]
+    \item \kant*[5][2]
+    \item \kant*[5][3]
+\end{itemize}
+
+\kant*[6]
+\begin{figure}
+    \centering
+    \includegraphics[width=8.5cm,trim={0 4mm 0 0},clip]{Construction}
+    \caption[Under Construction. {[Licensed under \nolinkurl{invalid/link/example} or the Licence]}]{Under Construction. Figure taken from a story book (credit: Author~McChildren \etal).}
+    \label{fig:construction}
+\end{figure}
+
+\topicbreak
+
+\kant[7][1-4]
+
+\section{Statistics of cosmic random fields}
+\label{sec:statistics of cosmic random fields}
+
+\kant*[8][1-2]Add a quote.\footnote{\quotestamp\qtl{A smart quote.}}
+
+\paragraph{Gaussian random fields.} \kant[10][1-2]
+    \begin{equation}
+        \PDF[][\delta] = A^{-{1}/{2}} \exp[- \frac{1}{2} \int \ddd{\vb*{r}_1} \ddd{\vb*{r}_2} \func{\delta}(\vb*{r}_1) \func{\xi}(\vb*{r}_1, \vb*{r}_2)^{-1} \func{\delta}(\vb*{r}_2)] \,,
+        \label{eq:stats | PDF | GRF}
+    \end{equation}
+where \notn{vartheta} is the \term{spherical polar angle}, and the normalisation constant is given by
+    \begin{equation}
+        A^{\flatfrac{1}{2}} = \int \Dm{\delta} \exp[- \frac{1}{2} \int \ddd{\vb*{r}_1} \ddd{\vb*{r}_2} \func{\delta}(\vb*{r}_1) \func{\xi}(\vb*{r}_1, \vb*{r}_2)^{-1} \func{\delta}(\vb*{r}_2)] \,.
+    \end{equation}
+Here \(\Dm{\delta} \deq \lim_{N \to \infty} \prod_{i=1}^N \flatfrac{\dd{\func{\delta}(\vb*{r}_i)}}{(2\pi)^N}\) is the Wiener measure.
+
+\paragraph{Polyspectra.} Similar to correlation functions in configuration space, one can consider the \(N\)-point correlator~\(\ev{\func{\delta}(\vb*{k}_1) \dotsm \func{\delta}(\vb*{k}_N)}\) in Fourier space.
+    \begin{equation}
+        \func{P}(\vb*{k}) \deq \int \ddd{\vb*{r}} \e^{-\im\vb*{k}\vdot\vb*{r}} \func{\xi}(\vb*{r}) \,, \quad \func{\xi}(\vb*{r}) \deq \int \frac{\ddd{\vb*{k}}}{(2\pi)^3} \e^{\im\vb*{k}\vdot\vb*{r}} \func{P}(\vb*{k}) \,.
+    \end{equation}
+
+\paragraph{Ergodicity.} \kant[11][1-2]
+    \begin{equation}
+        \ev{\,\digamma\,} \deq \int \Dm{\delta} \PDF[][\delta] \func{\digamma}[\delta] \,,
+    \end{equation}
+may be replaced by its volume average,
+    \begin{equation}
+        \bar{\digamma} \deq \int_V \ddd{\vb*{r}} \func{\digamma}[\func{\delta}(\vb*{r})] \,,
+    \end{equation}
+as long as the volume~\(V\) provides a fair sample of the field~\(\delta\). The shot noise power will add to the underlying clustering power spectrum \bref[see ][ for an illustration of Poisson sampling]{fig:construction}.
+    \begin{align}
+        \MoveEqLeft[1] \expval{\func{\Phi}(\vb*{k}_1) \func{\Phi}(\vb*{k}_2) \func{\Phi}(\vb*{k}_3)} \nonumber \\
+        &= (2\pi)^3 f_\mathrm{NL} \int \frac{\ddd{\vb*{q}_1}}{(2\pi)^3} \frac{\ddd{\vb*{q}_2}}{(2\pi)^3} \dirac(\vb*{q}_1 + \vb*{q}_2 - \vb*{k}_3) \Big[\ev{\func{\Phi_\mathrm{G}}(\vb*{k}_1) \func{\Phi_\mathrm{G}}(\vb*{k}_2) \func{\Phi_\mathrm{G}}(\vb*{q}_1) \func{\Phi_\mathrm{G}}(\vb*{q}_2)} \nonumber \\
+        & \qquad\qquad\qquad - \ev{\func{\Phi_\mathrm{G}}(\vb*{k}_1) \func{\Phi_\mathrm{G}}(\vb*{k}_2)} \ev{\func{\Phi_\mathrm{G}}(\vb*{q}_1) \func{\Phi_\mathrm{G}}(\vb*{q}_2)} \Big] + \dotsb
+        \label{eq:correlator | bispectrum | local PNG}
+    \end{align}
+where Isserlis' theorem has been applied and ellipses indicate contributions from the remaining cyclic permutations\textellipsis
+
+\section{Cosmological likelihood inference}
+\label{sec:cosmological likelihood inference}
+
+Using Bayes' theorem, which is a basic yet profound result in probability theory, one could find the \term{posterior probability}~\notn{Post} of some cosmological model parameter(s)~\notn{theta} given the measurement data~\(\vb*{X}\),
+    \begin{equation}
+        \Post(\given{\theta}{\vb*{X}}) = \frac{\Prior(\theta)}{\PDF(\vb*{X})} \Like(\theta; \vb*{X}) \,.
+        \label{eq:stats | Bayes theorem}
+    \end{equation}
+Here the \term{likelihood function}~\notn{Like} is given by the PDF of the data random variables conditional on the model parameters,
+    \begin{equation}
+        \Like(\theta; \vb*{X}) \deq \PDF(\given{\vb*{X}}{\theta}) \,;
+        \label{eq:stats | likelihood}
+    \end{equation}
+the PDF~\(\func{\notn{Prior}}(\theta)\) specifies the \term{prior distribution} of the parameters; and the PDF of the data marginalised over all model parameters, \(\PDF(\vb*{X})\), is sometimes known as the evidence and acts to normalise the posterior. It is worth emphasising here that although the likelihood is formed from the PDF of the data, it should be viewed as a function of the model parameters~\(\theta\) with the data variables~\(\vb*{X}\) fixed at the observed values. In either the frequentists' or the Bayesian framework, the likelihood plays a central r\^ole in classical parameter inference.
+    \begin{equation}
+        \Like(\lowerh{-0.25ex}{\theta; \est{\vb*{P}}}) \deq \PDF(\given{\lowerh{-0.25ex}{\est{\vb*{P}}}}{\lowerh{-0.25ex}{\theta}}) = \frac{1}{\sqrt{\abs{2\pi\mat{\Sigma}}}} \exp{- \frac{1}{2} \trans{\qty[\est{\vb*{P}} - \func{\vb*{P}}(\theta)]} \mat{\Sigma}^{-1} \qty[\est{\vb*{P}} - \func{\vb*{P}}(\theta)]} \,.
+        \label{eq:stats | likelihood | Gaussian | power spectrum}
+    \end{equation}

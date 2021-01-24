@@ -1,0 +1,374 @@
+% ------------------------------------------------------------------------
+% config/pkgs/pkg_rc.tex
+%
+% Set up package configurations.  Tweak various settings to achieve
+% desired typesetting outcomes.  See individual package documentation
+% for further instructions.
+% ------------------------------------------------------------------------
+
+% Package: amsmath
+% --------------------
+
+\allowdisplaybreaks
+
+
+% Package: bibentry
+% ---------------------
+
+\nobibliography*
+
+
+% Package: caption
+% --------------------
+
+\DeclareCaptionLabelSeparator{quadsep}{.\quad}
+
+\captionsetup[table]{position=above}
+\captionsetup{
+    skip=1.5em,
+    labelsep={quadsep},
+    labelfont={sf,bf,small},
+    textfont={small}
+}
+
+% Set numbering for continuously labelled figures.
+\renewcommand{\theContinuedFloat}{(\alph{ContinuedFloat})}
+
+
+% Package: cleveref
+% ---------------------
+
+% Capitalise only tables and figures. Abbreviate only bracketed figure
+% and equation references.
+
+\crefname{figure}{Figure}{Figures}
+\crefname{table}{Table}{Tables}
+
+\creflabelformat{equation}{#2(#1)#3}
+\crefmultiformat{equation}{%
+    equations~#2(#1)#3%
+}{ and~#2(#1)#3}{, #2(#1)#3}{ and~#2(#1)#3}
+\crefrangeformat{equation}{equations~#3(#1)#4--#5(#2)#6}
+
+\newcommand{\crefrangeconjunction}{--}
+
+% Add local, temporary switches between bracketed, abbreviated references
+% (``\abbrvcrefnames``) and full references (``\fullcrefnames``) by
+% issuing ``\bref`` combining the two.
+
+\DeclareRobustCommand{\fullcrefnames}{%
+    \crefname{chapter}{chapter}{chapters}%
+    \crefname{section}{section}{sections}%
+    \crefname{subsection}{subsection}{subsections}%
+    \crefname{figure}{Figure}{Figures}%
+    \crefname{equation}{equation}{equations}%
+    \crefname{subequation}{equation}{equations}%
+    \crefformat{equation}{##2equation~(##1)##3}%
+    \crefformat{subequation}{##2equation~(##1)##3}%
+    \crefmultiformat{equation}{%
+        equations~##2(##1)##3%
+    }{ and~##2(##1)##3}{, ##2(##1)##3}{ and~##2(##1)##3}%
+    \crefmultiformat{subequation}{%
+        equations~##2(##1)##3%
+    }{ and~##2(##1)##3}{, ##2(##1)##3}{ and~##2(##1)##3}%
+    \crefrangeformat{equation}{equations~##3(##1)##4--##5(##2)##6}%
+    \crefrangeformat{subequation}{equations~##3(##1)##4--##5(##2)##6}%
+}
+\DeclareRobustCommand{\abbrvcrefnames}{%
+    \crefname{chapter}{\S\!}{\S\S\!}%
+    \crefname{section}{\S\!}{\S\S\!}%
+    \crefname{subsection}{\S\!}{\S\S\!}%
+    \crefname{figure}{Fig.}{Figs.}%
+    \crefname{equation}{eq.}{eqs.}%
+    \crefname{subequation}{eq.}{eqs.}%
+    \crefformat{equation}{##2eq.~##1##3}%
+    \crefformat{subequation}{##2eq.~##1##3}%
+    \crefmultiformat{equation}{%
+        eqs.~##2##1##3%
+    }{ and~##2##1##3}{, ##2##1##3}{ and~##2##1##3}%
+    \crefmultiformat{subequation}{%
+        eqs.~##2##1##3%
+    }{ and~##2##1##3}{, ##2##1##3}{ and~##2##1##3}%
+    \crefrangeformat{equation}{eqs.~##3##1##4--##5##2##6}%
+    \crefrangeformat{subequation}{eqs.~##3##1##4--##5##2##6}%
+}
+
+%% Format references as '[pre-text][post-text]{cite_tag}', e.g.
+%% ``\bref[see ][ for details]{eq:field equation,eq:probability}`` may
+%% render as '(see eq.~5 and~6 for details)' hyperlinked.
+%TC:macro \bref [option:word,option:word,1]
+\NewDocumentCommand{\bref}{O{} O{} m}{%
+    {({#1}\abbrvcrefnames\cref{#3}{#2})}%
+    \fullcrefnames%
+}
+
+
+% Package: datetime
+% ---------------------
+
+\setdefaultdate{\yyyymmdddate}
+
+\renewcommand{\dateseparator}{.}
+
+
+% Package: enumitem
+% ---------------------
+
+\setlist[enumerate]{
+    label={\arabic*)},
+    topsep=1pt,
+    itemsep=1pt,
+    parsep=\parskip,
+    labelsep=1ex,
+    labelindent=\parindent,
+    leftmargin=*
+}
+\setlist[itemize]{
+    label={\raisebox{1pt}{\fontsize{7}{7}\selectfont\(\blacksquare\)}},
+    topsep=1pt,
+    itemsep=1pt,
+    parsep=\parskip,
+    labelsep=1ex
+}
+
+
+% Package: floatrow
+% ---------------------
+
+\floatsetup[table]{capposition=top}
+
+
+% Package: fnpct
+% ------------------
+
+\makepagenote
+
+\setfnpct{punct-after}
+
+
+% Package: geometry
+% ---------------------
+
+\geometry{inner=40mm,outer=23.5mm,top=28mm,bottom=20mm}  % default margins
+
+
+% Package: glossaries-extra
+% -----------------------------
+
+\makeglossaries
+
+% Determine whether or not to add hyperlinks for certain categories.
+\glssetcategoryattribute{topic}{nohyper}{true}
+\glssetcategoryattribute{notation}{nohyper}{true}
+
+% Use only short form for certain acronyms, and only short form in small
+% caps for code names.
+\setabbreviationstyle[acronym]{short}
+\setabbreviationstyle[code]{short-sc}
+
+% Adjust glossary table spacing for abbreviations and notations.
+\newglossarystyle{abbrstyle}{%
+    \setglossarystyle{long}%
+    % Set width of glossary entry name columns.
+    \let\namecolumnwidth\relax%
+    \newlength\namecolumnwidth%
+    \setlength\namecolumnwidth{4.5em}%
+    % Set column separation.
+    \let\columnsep\relax%
+    \newlength\columnsep%
+    \setlength\columnsep{1.8em}%
+    % Declare column types named '\Nm' and '\Ds'.
+    \newcolumntype{\Nm}{>{\raggedright\arraybackslash}p{\namecolumnwidth}}%
+    \newcolumntype{\Ds}{%
+        >{\raggedright\arraybackslash}%
+        p{\linewidth-\namecolumnwidth-\columnsep-2.4em}%
+    }%
+    % Declare glossaties as 'longtable' with customised columns.
+    \renewenvironment{theglossary}{%
+        \begin{longtable}[l]{\Nm @{\hspace{\columnsep}} \Ds}%
+    }{%
+        \end{longtable}%
+    }%
+}
+\newglossarystyle{symbstyle}{%
+    \setglossarystyle{long}%
+    % Set width of glossary entry name columns.
+    \let\namecolumnwidth\relax%
+    \newlength\namecolumnwidth%
+    \setlength\namecolumnwidth{4.5em}%
+    % Set column separation.
+    \let\columnsep\relax%
+    \newlength\columnsep%
+    \setlength\columnsep{1.8em}%
+    % Declare column types named '\Nm' and '\Ds'.
+    \newcolumntype{\Nm}{>{\raggedleft\arraybackslash}p{\namecolumnwidth}}%
+    \newcolumntype{\Ds}{%
+        >{\raggedright\arraybackslash}%
+        p{\linewidth-\namecolumnwidth-\columnsep-2.4em}%
+    }%
+    % Declare glossaties as 'longtable' with customised columns.
+    \renewenvironment{theglossary}{%
+        \begin{longtable}[l]{\Nm @{\hspace{\columnsep}} \Ds}%
+    }{%
+        \end{longtable}%
+    }%
+}
+
+% Allow only the first instance used in text to be hyperlinked
+% to glossary.
+\renewcommand*{\glslinkcheckfirsthyperhook}{%
+    \ifglsused{\glslabel}{%
+        \setkeys{glslink}{hyper=false}%
+    }{}%
+}
+
+% Change typesetting for individual glossary elements.
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+% \renewcommand{\glsxtrfullsep}[1]{~}
+
+
+% Package: graphics
+% ---------------------
+
+\graphicspath{{attachments/graphics/}{attachments/figures/}}
+
+
+% Package: hyperref
+% ---------------------
+
+\hypersetup{
+    hidelinks,
+    breaklinks=true,
+    colorlinks=false,
+    linktoc=all,
+    bookmarksdepth=2,
+    draft=false
+}
+
+\hypersetup{
+    pdftitle={Grand Thesis Title},
+	pdfauthor={Author McAuthor},
+	pdfsubject={Unified Theory of Everything},
+    pdfkeywords={%
+        add thesis keyword; add additional thesis keyword%
+    },
+    pdfcreator={XeLaTeX with hyperref in the memoir class},
+	pdfinfo={PubType={Doctoral Thesis}},
+    pdfstartview={XYZ null null 1.00},
+    pdfstartpage=1
+}
+
+
+% Package: letterine
+% ----------------------
+
+\renewcommand{\LettrineTextFont}{}  % annul default font settings
+                                    % for initial letters
+
+
+% Package: microtype
+% ----------------------
+
+\microtypesetup{draft=false}
+
+
+% Package: natbib
+% -------------------
+
+\setcitestyle{numbers,square,nonamebreak,citesep={,},notesep={}}
+
+\setlength{\bibsep}{0.5\baselineskip plus 0.5\baselineskip}
+
+\renewcommand{\bibpreamble}{\SingleSpacing\small}
+\renewcommand{\bibnumfmt}[1]{{%
+    \addfontfeature{Numbers={Proportional,Lining}}%
+    \hphantom{[999]}%  % reserve sufficient horizontal spacing up to the
+                       % width of '[999]'
+    \llap{[{\footnotesize#1}]}%  % collapse onto reserved
+                                 % horizontal spacing
+}}
+
+
+% Reset footnote-specific citation number font.
+
+%% Declare Boolean switch for whether inside/outside footnotes.
+\newif\ifinfootnote
+\infootnotefalse
+
+%% Switch citation number font depending on whether
+%% inside/outside footnotes.
+\let\oldfootnote\footnote
+\renewcommand{\footnote}[1]{\infootnotetrue\oldfootnote{#1}\infootnotefalse}
+\renewcommand{\citenumfont}[1]{{%
+    \ifinfootnote%
+        \tiny%
+    \else%
+        \footnotesize%
+    \fi%
+    \addfontfeature{Numbers={Proportional,Lining}}%
+    #1%
+}}
+
+
+% Add 'texcount' directives for some package 'natbib' commands.
+
+%TC:macro \cite [option:word,option:word,ignore]
+%TC:macro \citetalias 1
+%TC:macro \citepalias [ignore]
+
+
+% Package: silence
+% --------------------
+
+% Try to suppress innocuous warnings.
+
+\WarningFilter{babel}{The following font is not a babel standard family}
+\WarningFilter{babel}{The following fonts are not babel standard families}
+\WarningFilter{caption}{Unused \captionsetup}
+\WarningFilter{hyperref}{Token}
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{latexfont}{Size substitution}
+\WarningFilter{latexfont}{Some font shapes were not available, defaults substituted}
+
+
+% Package: siunitx
+% --------------------
+
+% Tweak and add as appropriate.
+
+\sisetup{separate-uncertainty=true}
+
+\DeclareSIUnit\deg{deg}
+\DeclareSIUnit\parsec{pc}
+\DeclareSIUnit\solarmass{\ensuremath{M_\odot}}
+
+
+% Package: tikz
+% -------------------
+
+% Load 'tikz' libraries as appropriate.
+
+\usetikzlibrary{arrows.meta,calc,svg.path}
+
+
+% Package: xcolor
+% -------------------
+
+% Add brand-specific colours.  Add more as appropriate.
+\definecolor{orcid}{HTML}{A6CE39}  % ORCID icon
+
+% Base this template's colour scheme on shades of grey (designed to
+% be almost monochrome).
+\definecolor{slategrey}{HTML}{708090}  % theme colour used in the
+                                       % command ``\inking``
+\definecolor{argent}{HTML}{C0C0C0}  % shading colour for document elements
+\definecolor{platinum}{HTML}{E5E4E2}  % shading colour for 'tikz' diagrams
+
+% Offer additional colours for the user to consider.  None below
+% is used in this template.
+\definecolor{tyrianpurple}{HTML}{66023C}
+\definecolor{imperialblue}{HTML}{005A92}
+\definecolor{royalblue}{HTML}{002366}
+
+% Define the theme colour used in e.g. the title page, epigraph etc.
+\newcommand{\inking}{slategrey!175}

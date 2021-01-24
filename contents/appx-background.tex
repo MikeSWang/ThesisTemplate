@@ -1,0 +1,22 @@
+\chapter{Cosmological Background}
+\label{appx:cosmological background}
+
+The materials presented in this appendix are mostly based\textellipsis
+
+\topicbreak*
+
+\paragraph{Cosmological distances.} There are several distance measures\textellipsis
+\begin{subequations}
+    \begin{equation}
+        \func{D_\mathrm{C}}(z) \deq \chi = D_{\mathrm{H},0} \int_0 \frac{\dd{z}}{\func{E}(z)} \,,
+    \end{equation}
+and the \term{transverse}, or \term{metric}, \term{comoving distance} is
+    \begin{equation}
+        \func{D_{\mathrm{H}}}(z) \deq S_K(\chi) = %
+        \begin{dcases}
+            \frac{D_{\mathrm{H},0}}{\sqrt{\Omega_{K,0}}} \oper{sin}[\sqrt{\Omega_{K,0}} \frac{\func{D_\mathrm{C}}(z)}{D_{\mathrm{H},0}}] & (\Omega_{K,0} > 0) \\
+            \func{D_\mathrm{C}}(z) & (\Omega_{K,0} = 0) \\
+            \frac{D_{\mathrm{H},0}}{\sqrt{\abs{\Omega_{K,0}}}} \oper{sinh}[\sqrt{\abs{\Omega_{K,0}}} \frac{\func{D_\mathrm{C}}(z)}{D_{\mathrm{H},0}}] & (\Omega_{K,0} < 0)
+        \end{dcases} \,.
+    \end{equation}
+\end{subequations}

@@ -1,0 +1,32 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% journalref.sty
+%
+% Provide shortcuts for journal names in bibliographies.  Modify as
+% appropriate.  See e.g. Wikipedia for ISO-4 journal abbreviations.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set journal name font style.
+\let\jnl@style=\itshape
+\def\ref@jnl#1{{\jnl@style#1}}
+
+% Add journal ISO-4--compliant abbreviations.
+\def\aap{\ref@jnl{Astron.\ Astrophys.}}  % Astronomy and Astrophysics
+\def\aj{\ref@jnl{Astron.~J.}}  % Astronomical Journal
+\def\apj{\ref@jnl{Astrophys.~J.}}  % Astrophysical Journal
+\def\apjl{\ref@jnl{Astrophys.~J.}}  % ... Letters
+\def\apjs{\ref@jnl{Astrophys.~J.\ Suppl.}}  % ... Supplements
+\def\apss{\ref@jnl{Astrophys.\ Space\ Sci.}} % Astrophysics and
+                                             % Space Science
+\def\jcap{\ref@jnl{J.~Cosmol.\ Astropart.\ Phys.}}  % Journal of Cosmology
+                                                    % and Astroparticle
+                                                    % Physics
+\def\jhep{\ref@jnl{J.~High Energy Phys.}}
+\def\mnras{\ref@jnl{Mon.\ Not.\ Roy.\ Astron.\ Soc.}}  % Monthly Notices
+                                                       % of the RAS
+\def\nat{\ref@jnl{Nature}}  % Nature
+\def\natast{\ref@jnl{Nat.\ Astron.}}  % ... Astronomy
+\def\pasj{\ref@jnl{Pub.\ Astron.\ Soc.\ Jap.}}  % Publications of the ASJ
+\def\physrep{\ref@jnl{Phys.\ Rep.}}  % Physics Reports
+\def\physrev{\ref@jnl{Phys.\ Rev.}}  % Physics Review (defunct)
+\def\prd{\ref@jnl{Phys.\ Rev.~D}}  % ... D
+\def\prl{\ref@jnl{Phys.\ Rev.\ Lett.}}  % ... Letters

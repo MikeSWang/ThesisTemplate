@@ -1,0 +1,82 @@
+% ------------------------------------------------------------------------
+% config/profiles/titlepage.tex
+%
+% Set title page elements and styles.
+% ------------------------------------------------------------------------
+
+% Set white space above title.
+
+\setlength{\droptitle}{30mm}
+
+
+% Set coloured background banner dimensions.
+
+%% HACK: The calculations do not seem to work for non-A4 paper.
+\newlength{\fullmargin}
+\setlength{\fullmargin}{%
+    (\paperwidth-\linewidth)/2+\marginparsep%
+}
+
+\newtcolorbox{colourband}{
+    parbox=true,
+    colback=argent!33,
+    colframe=argent!33,
+    width=\paperwidth+0.5mm,
+    left*=0pt,
+    right*=\fullmargin+0.25mm,
+    enlarge left by=-\fullmargin,
+    sharp corners
+}
+
+
+% Set title page elements' surroundings.  Tweak as appropriate.
+
+\pretitle{%
+    \begin{colourband}
+        \vspace{1.5em}
+        \centering
+        \hdfont\bfseries
+        \color{\inking}
+}
+\posttitle{%
+        \vspace{1em}
+    \end{colourband}
+    \vspace{7.5mm}
+}
+
+\preauthor{%
+    \begin{center}
+        by\\[1em]
+        \begingroup
+            \bfseries\large
+}
+\postauthor{%
+        \endgroup
+    \end{center}
+    \vfill
+}
+
+\predate{%
+    \begin{center}
+        \bfseries
+        \includegraphics[
+            height=50mm,trim={2mm 2mm 2mm 2.65mm},clip
+        ]{Crest}
+        \vfill
+}
+\postdate{%
+    \end{center}
+    \vspace{-7.5mm}
+}
+
+% Add title page information.
+
+\title{%
+    {\Huge {An Unofficial Thesis Template}} \protect\\[4mm]
+    {\LARGE {for}} \protect\\[6mm]
+    {\Huge {Doctoral Students}}
+}
+
+\author{Author McAuthor}
+
+\date{\submissionmonth}

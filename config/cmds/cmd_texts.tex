@@ -1,0 +1,87 @@
+% ------------------------------------------------------------------------
+% config/cmds/cmds_texts.tex
+%
+% Set text-related commands.
+% ------------------------------------------------------------------------
+
+% Add glossary-related commands.
+
+%% Add an abbreviated glossary term in the form of '\emph{longform}~(
+%% shortform})\emph{ending}, e.g. '\emph{redshift-space distortion}~(RSD)
+%% \emph{ model}'.  The starred variant ``\abbrterm*{RSD}[ model]`` is
+%% for plural forms.
+\DeclareDocumentCommand{\abbrterm}{s m O{}}{%
+    \IfBooleanTF#1{%
+        \emph{\glsforcelongpl{#2}}~(\glsxtrshortpl{#2})\emph{#3}%
+    }{%
+        \emph{\glsforcelong{#2}}~(\glsxtrshort{#2})\emph{#3}%
+    }%
+}
+
+\newcommand{\code}[1]{\gls{#1}}  % for code names only
+\newcommand{\notn}[1]{\gls{#1}}  % for notations only
+
+
+% Add bibliography-related commands.
+
+%% Search the bibliography for matches to a name, and replace it
+%% with semi-bold font.
+\newcommand{\FormatName}[1]{\IfStrEq{#1}{MS~Wang}{\textsb{#1}}{#1}}
+
+%% Make bibliography entry title all uppercase (as it may appear in some
+%% ApJ articles).  See template .bib files for examples.
+\newcommand{\scuppercase}[1]{{\footnotesize{\protect\MakeTextUppercase{#1}}}}
+
+
+% Add citation-related commands.
+
+%% Add the word 'ref.' or 'refs.' before a citation, e.g. 'ref.~[12]'.
+%TC:macro \rcite [option:word,option:word,ignore]
+%TC:macro \rcites [option:word,option:word,ignore]
+\DeclareDocumentCommand{\rcite}{O{} O{} m}{ref.~\cite[#1][#2]{#3}}
+\DeclareDocumentCommand{\rcites}{O{} O{} m}{refs.~\cite[#1][#2]{#3}}
+
+%% [As above but capitalised.]
+\newcommand{\Rcite}[1]{Ref.~\cite{#1}}
+\newcommand{\Rcites}[1]{Refs.~\cite{#1}}
+
+
+% Add Roman/Latin/Greek-related commands.
+
+%% Convert a number to its equivalent Roman numeral, e.g. ``\RNum{2}``
+%% renders as 'II'.
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+
+% Add font-related commands.
+
+\newcommand{\term}[1]{\emph{#1}}
+\newcommand{\mission}[1]{\textit{#1}}
+\newcommand{\codename}[1]{\textsc{#1}}  % for code *names* only
+\newcommand{\booktitle}[1]{\textit{#1}}
+\newcommand{\acknowledge}[1]{\textsb{#1}}
+
+
+% Add text shortcuts.
+
+\newcommand{\emdash}{{\kern0.1em---\kern0.1em}}
+\newcommand{\qts}[1]{`#1'}  % single quote
+\newcommand{\qtl}[1]{``#1''}  % double quote
+\newcommand{\quotestamp}{{%  % add a 'fontawesome' icon glyph
+                             % (used before a quote)
+    \kern0.1em%
+    \raisebox{0.05\baselineskip}{\faCommentO}%
+    \medspace%
+}}
+
+%% Latin abbreviations (``%TC:macroword`` for command word count).
+%TC:macroword \cf 1
+\newcommand{\cf}{cf.}
+%TC:macroword \eg 2
+\newcommand{\eg}{e.g.}
+%TC:macroword \etc 2
+\newcommand{\etc}{etc.}
+%TC:macroword \etal 2
+\newcommand{\etal}{et al.}
+%TC:macroword \ie 2
+\newcommand{\ie}{i.e.}

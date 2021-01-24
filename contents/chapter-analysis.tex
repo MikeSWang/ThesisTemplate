@@ -1,0 +1,89 @@
+\chapter{Analysis}
+\label{chap:analysis}
+
+This weight is explicitly dependent on the wavenumber~\(k\) of the band power spectrum one attempts to estimate; in practice, it suffices to set it to a constant value typical of the power spectrum in the range of scales of interest, \eg\ \(\bar{P} = \groupfour{10000}\,\si{\per\cubic\mega\parsec}\) set in the \gls{BOSS} Data Release 12 analysis.
+    \begin{equation}
+        \legendre{\ell}(\lowerh{-0.2ex}{\vu*{k} \vdot \vu*{s}}) \equiv \frac{4\pi}{2\ell + 1} \sum_{m=-\ell}^\ell \sphY{\ell m}(\lowerh{-0.2ex}{\vu*{k}}) \sphYc{\ell m}(\vu*{s}) \,.
+    \end{equation}
+\Rcite{Wang2020b} argues that\textellipsis\ The coefficients~\(A^{\ell_1}_{\ell L}\) can be found from the identity
+    \begin{equation}
+        \legendre*{\ell} \legendre*{L} \equiv \sum_{\ell' = 0}^{\min{\!\qty{\ell,L}}} \frac{2\ell + 2L - 4\ell' + 1}{2\ell + 2L - 2\ell' + 1} \frac{C_{\ell - \ell'} \mkern2mu C_{\ell'} \mkern2mu C_{L - \ell'}}{C_{\ell + L - \ell'}} \legendre*{\ell + L - 2\ell'} \,,
+    \end{equation}
+where the matrices~\(\mat{M}_{2i}\) are \(\mat{M}_0 = \mat{I}_3\) (the identity matrix) and
+    \begin{equation}
+    \begin{alignedat}{2}
+        \mat{M}_2 &= \begin{pmatrix*}[r]
+            0 & \flatfrac{1}{5} & 0 \\
+            1 & \flatfrac{2}{7} & \flatfrac{2}{7} \\
+            0 & \flatfrac{18}{35} & \flatfrac{20}{77}
+        \end{pmatrix*} \,, &\quad
+        \mat{M}_4 &= \begin{pmatrix*}[r]
+            0 & 0 & \flatfrac{1}{9} \\
+            0 & \flatfrac{2}{7} & \flatfrac{100}{693} \\
+            1 & \flatfrac{20}{77} & \flatfrac{162}{1001}
+        \end{pmatrix*} \,, \\
+        \mat{M}_6 &= \begin{pmatrix*}[r]
+            0 & 0 & 0 \\
+            0 & 0 & \flatfrac{25}{143} \\
+            0 & \flatfrac{45}{143} & \flatfrac{20}{143}
+        \end{pmatrix*} \,, &\quad
+        \mat{M}_8 &= \begin{pmatrix*}[r]
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & \flatfrac{490}{2431}
+        \end{pmatrix*} \,.
+    \end{alignedat}
+    \end{equation}
+To link the two, one may write
+    \begin{align}
+        \ev{\lowerh{-0.2ex}{\func{\est{P}_\ell}(k)}} &= %
+        \begin{multlined}[t][0.75\linewidth]
+            \frac{2\ell + 1}{2} \sum_{\ell'} \qty(2\ell_1 + 1) \im^{-\ell_1} \iint \dd{\mu_{\vb*{k}}} \frac{\dd{\varphi_{\vb*{k}}}}{2\pi} \int \ddd{\vb*{x}} \int \ddd{\vb*{s}} \func{j_{\ell_1}}(ks) \\
+            \times \legendre{\ell_1}(\lowerh{-0.2ex}{\vu*{k}\vdot\vu*{s}}) \legendre{\ell}(\lowerh{-0.2ex}{\vu*{k}\vdot\vu*{d}}) \sum_L \func{\xi_L}(s) \legendre{L}(\lowerh{-0.2ex}{\vu*{s}\vdot\vu*{d}}) \,.
+        \end{multlined} \nonumber \\
+        &= \dots
+    \end{align}
+\lsmode{%
+\begin{figure}
+    \vspace*{0.075\normalwd}
+    \floatbox[{%
+        \capbeside\thisfloatsetup{capbesideposition={right,top},capbesidesep=quad}%
+    }]{figure}[\FBwidth]{%
+        \includegraphics[height=0.9\normalwd,trim={0 3mm 0 1mm},clip]{Construction}
+    }{{%
+        \captionsetup{justification=raggedright}
+        \caption[Best-fitting models. {[Reprinted under the Licence]}]{Best-fitting models. Figure taken from Fig.~1 in \citetalias{Wang2020a}.}
+        \label{fig:luminosity function}
+    }}
+\end{figure}
+}
+Or perhaps
+\begin{subequations}
+    \begin{align}
+        \Phi_{\mu\nu} &\deq \kappa_\nu \int r^2 \dd{r} \mkern1.5mu \func{w}(\fid{r}) \func{j_\mu}(\fid{r}) \func{j_\nu}(r) \func{\phi}(r) \func{\bar{n}}(z) \mkern1mu \frac{\func{b_{k_\nu}}(z)}{\func{b_{k_\nu}}(0)} \func{D_1}(z) \,, \\
+        \Upsilon_{\mu\nu} &\deq \frac{\kappa_\nu}{k_\nu^2} \int r^2 \dd{r} \, \func{(w j_\mu)'}(\fid{r}) \func{j'_\nu}(r) \func{\phi}(r) \func{\bar{n}}(z) \func{\gamma}(z) \mkern1mu \frac{\func{f}(z)}{\func{f}(0)} \func{D_1}(z) \,,
+    \end{align}
+\end{subequations}
+
+Do not ignore PNG\@.
+\begin{table}
+    \centering
+    \caption[Posterior median estimates.]{Posterior median estimates.}
+    \begingroup
+    \setlength{\tabcolsep}{0.75ex}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{cccccc}
+        \toprule[1.15pt]
+        Parameters & \(\lg\phi_\ast\) & \(\func*{m_\ast}(z_\mathrm{p})\) & \(\alpha\) & \(\beta\) & \(k_1\) \\
+        \midrule[1pt]
+        \(z \in [\num{0.68}, \num{2.2})\) & \multirow{2}{*}{\(\measurement{-26.20}{+0.21}{-0.20}\)} & \multirow{2}{*}{\(\measurement{-5.76}{+0.09}{-0.08}\)} & \(\measurement{-3.27}{+0.17}{-0.19}\) & \(\measurement{-1.40}{+0.06}{-0.06}\) & \(\measurement{-0.10}{+0.08}{-0.09}\) \\
+        \(z \in [\num{2.2}, \num{4.0}]\) & & & \(\measurement{-2.57}{+0.08}{-0.09}\) & \(\measurement{-1.21}{+0.10}{-0.09}\) & \(\measurement{-0.37}{+0.09}{-0.09}\) \\
+        \bottomrule[1.15pt]
+    \end{tabular}
+    \endgroup
+    \label{tab:PLE model fits}
+\end{table}
+\kant*[12][1-3] Here the ratio of the two different normalisation factors is
+    \begin{mlines}
+        \mathcal{C} \approx \frac{2}{5} \Omega_{\mathrm{m},0}^{-1} \bigg[\pi^{-1/2} \func{\Gamma}(\scriptstyle\frac{5}{6}) \func{\Gamma}(\scriptstyle\frac{5}{3}) (1 - \Omega_{\mathrm{m},0})^{-5/6} \Omega_{\mathrm{m},0}^{-2/3} \\ - \frac{1}{2} (1 - \Omega_{\mathrm{m},0})^{-3/2} \func{\tensor*[_2]{F}{_1}}(\scriptstyle\frac{2}{3}, \scriptstyle\frac{3}{2}; \scriptstyle\frac{5}{3}; - \scriptstyle\frac{\Omega_{\mathrm{m},0}}{1 - \Omega_{\mathrm{m},0}})\bigg]^{-1} \,,
+    \end{mlines}

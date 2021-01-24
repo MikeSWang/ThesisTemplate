@@ -1,0 +1,37 @@
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% config/meta.tex
+%
+% Meta-configurations for document compilation.
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% Define Boolean switches.
+
+\newif\ifversionfinal  % if true, the document version is final; however,
+                       % this does not affect individual packages
+\newif\ifviva  % if true, add viva information
+\newif\ifcompleted  % if true, all document components are compiled
+\newif\ifrevmode  % if true, turn on review mode
+                  % (with altered line spacing etc.)
+\newif\ifpreview  % if true, all elements are visible even in draft mode
+
+
+% Load document compilation parameters that set the Boolean switches.
+
+\input{parameters}
+
+
+% Configure document compilation settings.
+
+%% Override other Boolean switches if in preview mode.
+\ifpreview
+    \versionfinalfalse
+    \vivatrue
+    \completedtrue
+\fi
+
+%% Set document draft/final status.
+\ifversionfinal
+    \providecommand\status{final}
+\else
+    \providecommand\status{draft}
+\fi

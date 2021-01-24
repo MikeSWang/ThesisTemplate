@@ -1,0 +1,43 @@
+% ------------------------------------------------------------------------
+% config/profiles/fontconf.tex
+%
+% Font configurations.  This template uses package 'libterine' as
+% the default.
+% ------------------------------------------------------------------------
+
+% Configure super-package 'fontspec' settings.
+
+\defaultfontfeatures{
+    Ligatures={TeX,Common,Contextual},
+    Contextuals={Alternate},
+    Numbers={Proportional,OldStyle}
+}
+
+\setmonofont[
+    AutoFakeBold=4.5,  % mimic bold font for certain typewriter fonts
+    Scale=MatchLowercase,
+    Numbers={Lining}
+]{UM Typewriter}
+
+
+% Issue or add package 'libertine' font commands.
+
+\useosf  % old-style numbers
+
+\newcommand{\hdfont}{\libertineDisplay}  % display font for headings
+
+\DeclareRobustCommand{\sbseries}{\libertineSB}  % semi-bold
+\DeclareTextFontCommand{\textsb}{\sbseries}  % semi-bold
+
+
+% Set replacement maths glyphs.
+
+%% Set wide mathematical diacritics (taken from package 'mathabx').
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+
+\DeclareMathAccent{\widehat}{0}{mathx}{"70}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
+\DeclareMathAccent{\widetilde}{0}{mathx}{"72}
+\DeclareMathAccent{\widebar}{0}{mathx}{"73}

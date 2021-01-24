@@ -1,0 +1,272 @@
+% ------------------------------------------------------------------------
+% config/cmds/cmds_maths.tex
+%
+% Maths-mode commands. The TeX primitive ``$`` mostly appears here.
+% ------------------------------------------------------------------------
+
+% -------------------
+%     MATHEMATICS
+% -------------------
+
+% Diacritics-Related
+% ----------------------
+
+\let\primeT\prime  % old thick prime
+\renewcommand{\prime}{\primeS}  % thin prime
+
+\let\narrowbar\bar
+\renewcommand{\bar}[1]{\widebar{#1}}
+
+\let\narrowtilde\tilde
+\renewcommand{\tilde}[1]{\widetilde{#1}}
+
+\let\narrowcheck\check
+\renewcommand{\check}[1]{\widecheck{#1}}
+
+% Adjust height of letter under diacritic.
+% E.g. ``\lowerh{-0.2ex}{\widehat{P}}``.
+\newcommand{\lowerh}[2]{\raisebox{#1}{$#2$}}
+
+% Add shortcut/alias commands.
+\newcommand{\placeholder}{{%
+    \vcenter{\hbox{%
+        \protect\scalebox{0.5}{$\mkern2mu\bullet\mkern2mu$}%
+    }}%
+}}
+
+\newcommand{\est}[1]{\widehat{#1}}
+\newcommand{\fid}[1]{\breve{#1}}
+\newcommand{\filter}[1]{\tilde{#1}}
+
+
+% Relations and Delimiters
+% ----------------------------
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\DeclareDocumentCommand\given{o m m}{%  % conditional probability, e.g.
+                                        % ``\given[\Big]{A}{B}``
+	\IfNoValueTF{#1}{{%
+		\argopen.\mkern-2mu{#2}\mkern2mu%
+        \middle|%
+        \mkern2mu{#3}\mkern-2mu\argclose.%
+	}}{%
+	    #2\,#1|\,#3%
+	}%
+}
+
+\DeclareDocumentCommand\divergence{o m m}{%  % (KL) divergence, e.g.
+                                             % ``\divergence[\Big]{f}{g}``
+	\IfNoValueTF{#1}{{%
+		\argopen.\mkern-2mu{#2}\mkern2mu%
+        \middle\|%
+        \mkern2mu{#3}\mkern-2mu\argclose.%
+	}}{%
+	    #2\,#1\|\,#3%
+	}%
+}
+
+% Add/modify shortcut/alias commands.
+\let\geqflat\geq
+\renewcommand{\geq}{\geqslant}
+
+\let\leqflat\leq
+\renewcommand{\leq}{\leqslant}
+
+\newcommand{\deq}{=}
+\newcommand{\below}{\mathord{<}\,}
+
+
+% Differentials and Operations
+% --------------------------------
+
+% Define field measure (upright 'D').
+\newcommand{\dD}{\mathop{}\!\mathrm{D}}
+\DeclareDocumentCommand\Dm{o g d()}{%
+	\IfNoValueTF{#2}{%
+		\IfNoValueTF{#3}{%
+		    \dD\IfNoValueTF{#1}{}{^{#1}}%
+		}{%
+		    \mathinner{\dD\IfNoValueTF{#1}{}{^{#1}}\argopen[#3\argclose]}%
+            \mkern1mu%
+		}%
+	}{%
+	    \mathinner{\dD\IfNoValueTF{#1}{}{^{#1}}#2} \IfNoValueTF{#3}{}{[#3]}%
+	    \mkern1mu%
+	}%
+}
+
+% Add/modify shortcut/alias commands.
+\newcommand{\dda}[1]{\dd[2]{#1}}
+\newcommand{\ddd}[1]{\dd[3]{#1}}
+
+% Fine tune the transposition symbol.
+\makeatletter
+\newcommand*{\transT}{{\mathpalette\@transT{}}}
+\newcommand*{\@transT}[2]{%
+    \raisebox{\depth}{$\m@th#1\intercal$}%
+}
+\makeatother
+
+% Add/modify shortcut/alias commands.
+\newcommand{\conj}[1]{#1^\ast}
+\newcommand{\trans}[1]{#1^\transT}
+\newcommand{\herm}[1]{#1^\dagger}
+
+\newcommand{\conv}{\mathbin{*}}  % convolution operation
+
+
+% Function(al)s and Operators
+% -------------------------------
+
+% Note the starred variants (e.g. ``\Prob*``) of the following commands
+% are for function(al)s shown without argument, e.g. 'f' rather than
+% 'f(x)', or for occasions when automatic resizing of brackets is not
+% desired.  See the content of this template for examples of the
+% following commands.
+
+\NewDocumentCommand\Prob{s}{%  % probability (mass), e.g. ``\Prob(X)``
+    \IfBooleanTF#1{%
+        \func*{\mathbb{P}}
+    }{%
+        \func{\mathbb{P}}%
+    }%
+}
+\NewDocumentCommand\PDF{s o}{%  % probability density, e.g. ``\PDF(x)``
+    \IfBooleanTF#1{%
+        \IfNoValueTF{#2}{%
+            \func*{\raisebox{0.1ex}{$\mathbb{p}$}}%
+        }{%
+            \func*{\raisebox{0.1ex}{$\mathbb{p}$}_{#2}}%
+        }%
+    }{%
+        \IfNoValueTF{#2}{%
+            \func{\raisebox{0.1ex}{$\mathbb{p}$}}%
+        }{%
+            \func{\raisebox{0.1ex}{$\mathbb{p}$}_{#2}}%
+        }%
+    }%
+}
+
+\NewDocumentCommand\Exp{s}{%  % expectation, e.g. ``\Exp[X]``
+    \IfBooleanTF#1{%
+        \oper*{\mathbb{E}}%
+    }{%
+        \oper{\mathbb{E}}%
+    }%
+}
+\NewDocumentCommand\Var{s}{%  % variance, e.g. ``\Var[X]``
+    \IfBooleanTF#1{\oper*{var}}{\oper{var}}%
+}
+\NewDocumentCommand\Cov{s}{%  % covariance, e.g. ``\Cov[X]``
+    \IfBooleanTF#1{\oper*{cov}}{\oper{cov}}%
+}
+\NewDocumentCommand\Corr{s}{%  % correlation, e.g. ``\Corr[X]``
+    \IfBooleanTF#1{\oper*{corr}}{\oper{corr}}%
+}
+
+\NewDocumentCommand\Like{s o}{%  % likelihood, e.g. ``\Like[subscript](x)``
+    \IfBooleanTF#1{
+        \IfNoValueTF{#2}{%
+            \func*{\mathscr{L}}%
+        }{%
+            \func*{\mathscr{L}_{#2}}%
+        }%
+    }{%
+        \IfNoValueTF{#2}{%
+            \func{\mathscr{L}}%
+        }{%
+            \func{\mathscr{L}_{#2}}%
+        }%
+    }%
+}
+\NewDocumentCommand\Post{s}{%  % posterior, e.g. ``\Post(x)``
+    \IfBooleanTF#1{%
+        \func*{\mathscr{P}}%
+    }{%
+        \func{\mathscr{P}}%
+    }%
+}
+\NewDocumentCommand\Prior{s}{%  % prior, e.g. ``\Prior(x)``
+    \IfBooleanTF#1{%
+        \func*{\itpi}%
+    }{%
+        \func{\itpi}%
+    }%
+}
+
+\NewDocumentCommand{\KL}{m m}{%  % KL divergence, e.g. ``\KL{f}{g}``
+    \func{D_\mathrm{KL}}(\divergence{#1}{#2})%
+}
+
+\NewDocumentCommand\legendre{s m}{%  % Legendre polynomials, e.g.
+                                     % ``\legendre{\ell}(\mu)``
+    \IfBooleanTF#1{%
+        \func*{\mathcal{L}_{#2}}%
+    }{%
+        \func{\mathcal{L}_{#2}}%
+    }%
+}
+\NewDocumentCommand\sphY{s m}{%  % spherical harmonic, e.g.
+                                 % ``\sphY{\ell m}(x)``
+    \IfBooleanTF#1{%
+        \func*{\tensor{Y}{_{#2}}}%
+    }{%
+        \func{\tensor{Y}{_{#2}}}%
+    }%
+}
+\NewDocumentCommand\sphYc{s m}{%  % spherical harmonic complex conjugate
+    \IfBooleanTF#1{%
+        \func*{\tensor*{Y}{^\ast_{#2}}}%
+    }{%
+        \func{\tensor*{Y}{^\ast_{#2}}}%
+    }%
+}
+
+\NewDocumentCommand\dirac{s}{%  % Dirac delta, e.g. ``\dirac(x)``
+    \IfBooleanTF#1{%
+        \func*{\delta^\mathrm{(D)}}%
+    }{%
+        \func{\delta^\mathrm{(D)}}%
+    }%
+}
+\newcommand{\kron}{\delta^\mathrm{(K)}}  % Kronecker delta
+
+
+% Miscellaneous
+% -----------------
+
+% Typeset matrices in bold italic (relying on package 'isomath').
+
+\newcommand{\mat}[1]{\mathsfbfit{#1}}
+
+
+% (Re-)Define symbols.
+
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\oldforall}
+
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\C}{\mathbb{C}}  % complex numbers
+\newcommand{\R}{\mathbb{R}}  % real numbers
+\newcommand{\set}{\qty}  % a set, e.g. ``\set{a, b, c}``
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\renewcommand{\pi}{\mkern1mu\uppi\mkern1mu}
+\newcommand{\e}{\mkern1mu\mathrm{e}\mkern1mu}
+\newcommand{\im}{\mkern1mu\mathrm{i}\mkern1mu}
+
+\newcommand{\sparallel}{\varparallel}  % slanted parallel
+
+\newcommand{\diff}[1]{{\upDelta #1}}
+
+
+% ---------------------
+%     MISCELLANEOUS
+% ---------------------
+
+% Add custom maths commands.
+\newcommand{\measurement}[3]{{#1}^{#2}_{#3}}  % for demo purpose

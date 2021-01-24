@@ -1,0 +1,22 @@
+% ------------------------------------------------------------------------
+% contents/backmatter/embedded_file.tex
+%
+% Embed external file.  Adapt as appropriate.
+% ------------------------------------------------------------------------
+
+% Note 'addtotoc' keyword option adds the file to contents table.
+% Tweak 'scale' and 'offset' as appropriate.  Temporarily disable package
+% 'hyperref' warning "Token not allowed in a PDF string" owing to
+% technical difficulties using ``\texorpdfstring`` with
+% package 'pdfpages'.
+
+\WarningsOff*
+\includepdf[
+    pages=-,
+    scale=0.9,
+    offset=10mm 0,
+    keepaspectratio,
+    pagecommand={\thispagestyle{empty}},
+    % addtotoc={1,chapter,0,{Embedded file},embedding}
+]{attachments/files/DummyFile}
+\WarningsOn

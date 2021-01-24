@@ -1,0 +1,193 @@
+% ------------------------------------------------------------------------
+% config/profiles/frontmatter.tex
+%
+% Set the styles of front matter elements.
+% ------------------------------------------------------------------------
+
+% Define environment 'colophon'.
+
+\makeatletter
+\if@twoside
+    \newenvironment{colophon}{\begin{flushleft}\small}{\end{flushleft}}
+\else
+    \newenvironment{colophon}{\begin{flushright}\small}{\end{flushright}}
+\fi
+\makeatother
+
+
+% Add word count tool with bash commands.  This recounts upon each
+% compilation using 'texcount' with output written to file 'wordcount.sum'
+% in the root directory and processed into a sentence, the wording of
+% which can be changed as appropriate.  See 'texcount' documentation for
+% its command line usage.
+
+\newcommand{\quickwordcount}[1]{%
+    \immediate\write18{%
+        texcount -0 -1 -sum -merge -q #1.tex | sed 's/([^)]*)//g' | awk 'NF' %
+        > wordcount.sum
+    }%
+    This thesis has an estimated word count of
+    {\ttfamily\input{wordcount.sum}\unskip}
+    for the abstract, main matter and appendices.
+    Captions and footnotes are included in this count.
+}
+
+
+% Redefine environment 'abstract'.
+
+% \abstractintoc  % enable this command if the abstract is to be
+                  % included in contents table
+
+\setlength{\absleftindent}{0pt}
+\setlength{\absrightindent}{0pt}
+
+\renewcommand{\abstractnamefont}{%
+    \sffamily\bfseries\large%
+    \addfontfeature{LetterSpace=11}\spaceskip1.5ex%
+    \MakeUppercase%
+}
+\renewcommand{\abstracttextfont}{\normalfont\normalsize}
+
+
+% Define environment 'epigraph'.  Experiment and tweak as necessary.
+% See 'epigraph.tex' for an example for its usage.  Code recylced from
+% https://tex.stackexchange.com/questions/16964/block-quote-with-big-quotation-marks.
+
+\newcommand*{\quotesize}{35}
+\newenvironment{epiquote}[2]{
+    \def\quoteauthor{\textup{#1}}
+    \ifblank{#2}{
+        \def\quotesource{}
+    }{
+        \def\quotesource{, \textit{#2}}
+    }
+    \begin{quote}
+        \color{\inking}%
+        \bgroup
+        \epicstyle%
+        \tikz[remember picture,overlay,xshift=-4ex,yshift=-4ex]
+        \node (OQ) {\fontsize{\quotesize}{\quotesize}\selectfont``};
+}{
+        \hfill
+        \tikz[remember picture,overlay,xshift=3.25ex,yshift=-2.25ex]
+        \node (CQ) {\fontsize{\quotesize}{\quotesize}\selectfont''};
+        \vspace{8mm}
+        \par
+        \egroup
+        \hfill%
+        \rule[0.25\baselineskip]{1.5em}{1.5\pgflinewidth} \quoteauthor\quotesource
+    \end{quote}
+}
+
+
+% Set epigraph font style.  Annul this command if you do not want to
+% use the calligraphic font style.  May have no effect depending on
+% the typeface used.
+
+\newcommand{\epicstyle}{%
+    \itshape%
+    \addfontfeature{
+        Ligatures={Historic,Rare},
+        Contextuals={Alternate,Swash}
+    }%
+}
+
+
+% Fix or add to lists of contents.  Experiment and tweak as necessary.
+
+\renewcommand{\insertchapterspace}{}
+
+\renewcommand*{\afterlottitle}{\afterchaptertitle\vspace*{-3mm}}
+
+\makeatletter  % HACK: weird vertical spacing behaviour around LOF title
+\if@twoside
+    \renewcommand{\printloftitle}[1]{
+        {\raisebox{-10mm}{{\chaptitlefont \listfigurename}\par}}
+        \vskip9.5mm\par
+    }
+\fi
+\makeatother
+
+\renewcommand{\afterloftitle}{
+    % HACK: Fix weird vertical spacing behaviour around LOF title.
+    \vskip14mm\par
+    \raisebox{-4mm}{\parbox[t]{\textwidth}{
+        \normalfont\normalsize%
+        {\noindent}Add any explanatory text here. For instance, ``Except
+        where noted otherwise, figures appearing in this thesis are
+        original and licensed under the same terms (see
+        \protect\hyperlink{colophon}{copyright page}). Some figures from
+        prior publications by the author are reprinted or reproduced in
+        accordance with the Oxford University Press Standard Licence
+        (hereafter `the Licence')''.
+    }}\par
+}
+
+\addtocontents{lof}{\vskip5.5mm\par}  % HACK: weird vertical spacing
+                                      % behaviour around LOF title
+
+
+% Define front matter unnumbered chapter layout.
+
+\NewDocumentCommand\frontchapter{s m}{%
+    \IfBooleanTF#1{
+        \chapter*{#2}
+    }{
+        \chapter*{#2}\addcontentsline{toc}{chapter}{#2}\chaptermark{#2}
+    }
+}
+
+
+% Add arXiv logo.  The starred variant ``\arxiv*`` does nothing.
+
+\NewDocumentCommand\arxiv{s}{%
+    \IfBooleanTF#1{}{%
+        \raisebox{-0.2\baselineskip}{\includegraphics[height=2.5ex,keepaspectratio]{arXiv}}%
+        \nobreak\hspace{1mm}\nobreak%
+    }%
+}
+
+
+% Add ORCID logo with hyperlinked identifier.  Code recyled from
+% https://tex.stackexchange.com/questions/445563/ieeetran-how-to-include-orcid-in-tex-pdf-with-pdflatex.  See 'preface.tex'
+% for an example of its usage.
+
+\tikzset{
+    orcidlogo/.pic={
+        \fill[orcid] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+        \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+        svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+        svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+    }
+}
+
+\newcommand{\orcid}[1]{%
+    \href{https://orcid.org/#1}{%
+        \raisebox{-0.12\baselineskip}{\resizebox{2.25ex}{2.25ex}{%
+            \begin{tikzpicture}[yscale=-1,transform shape]
+                \pic{orcidlogo};
+            \end{tikzpicture}
+        }}%
+        \nobreak\hspace{1mm}\nobreak%
+        \nolinkurl{#1}%
+    }%
+}
+
+
+% Add GitHub logo with hyperlinked repository.  See 'preface.tex' for an
+% example of its usage.
+
+\newcommand{\github}[1]{%
+    \href{https://github.com/#1}{%
+        \raisebox{-0.05\baselineskip}{\faGithub}%
+        \nobreak\hspace{1mm}\nobreak%
+        \texttt{#1}%
+    }%
+}
+
+
+% Add ASCL records.  See 'preface.tex' for an example of its usage.
+
+\newcommand{\ascl}[1]{%
+    \href{https://ascl.net/#1}{[\texttt{ascl:#1}]}%
+}

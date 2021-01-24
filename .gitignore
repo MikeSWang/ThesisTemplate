@@ -1,0 +1,33 @@
+# Auxiliary files.
+*.aux
+*.bbl
+*.ent
+*.fls
+*.glo-abr
+*.gls-abr
+*.ist
+*.lof
+*.lot
+*.slo
+*.sls
+*.synctex.gz
+*.toc
+
+# Output files.
+*.xdv
+*.pdf
+*.sum
+*.html
+
+# Input files.
+!attachments/**/*.pdf
+
+# Log files.
+*.blg
+*.fdb_latexmk
+*.glg-abr
+*.log
+*.slg
+
+# OS-specific files.
+*.bat

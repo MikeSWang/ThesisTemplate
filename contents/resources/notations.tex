@@ -1,0 +1,171 @@
+% ------------------------------------------------------------------------
+% contents/resources/notations.tex
+%
+% This provides entries for notations compiled as a glossary.  Many
+% entries have been retained in this template for the user to become
+% familiar with package 'glossaries-extra'.
+% ------------------------------------------------------------------------
+
+% Add explanatory texts before the glossary.
+\apptoglossarypreamble[symbols]{%
+    Add any explanatory text here. For instance, ``Note that the bullet point~\qts{\(\placeholder\)} is a placeholder for a generic quantity, and a caron~\qts{\raisebox{-0.25\baselineskip}{\scalebox{2}[1]{\symbol{"02C7}}}} (not to be confused with a breve \qts{\raisebox{-0.25\baselineskip}{\scalebox{1.5}[1]{\symbol{"02D8}}}}) is sometimes used to denote a transformed quantity.''
+}
+
+\glsxtrnewsymbol[
+    category=notation,
+    description={probability density},
+    sort={pr probability}
+    % sort={stats: function: probability density}
+]{pdf}{\ensuremath{\mathbb{p}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={Dirac delta distribution},
+    sort={delta Dirac}
+    % sort={function: delta Dirac}
+]{dirac}{\ensuremath{\dirac*}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={Legendre polynomial of degree~\(\ell\)},
+    sort={L ell}
+    % sort={function: Legendre polynomial}
+]{legendre_ell}{\ensuremath{\legendre*{\ell}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={(a breve for) value in a fiducial cosmological model},
+    sort={:dia: breve}
+    % sort={symbol: fiducial}
+]{breve}{\ensuremath{\breve{\vphantom{t}\placeholder}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={(a thin prime for) derivative of a function with respect to its argument},
+    sort={:sym: prime}
+    % sort={symbol: derivative}
+]{deriv}{\ensuremath{\placeholder^\prime}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={(local-type) primordial non-Gaussianity parameter},
+    sort={f NL}
+    % sort={parameter: PNG}
+]{f_NL}{\ensuremath{f_\mathrm{NL}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={bispectrum shape function},
+    sort={S}
+    % sort={observable: correlator: bispectrum shape}
+]{S}{\ensuremath{S}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={(cosmological) model parameter(s)},
+    sort={theta}
+]{theta}{\ensuremath{\theta}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={posterior (probability density)},
+    sort={Pr posterior}
+    % sort={stats: function: posterior}
+]{Post}{\ensuremath{\mathscr{P}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={likelihood function},
+    sort={L}
+    % sort={stats: function: likelihood}
+]{Like}{\ensuremath{\mathscr{L}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={prior (probability density)},
+    sort={pi}
+    % sort={stats: function: prior}
+]{Prior}{\ensuremath{\itpi}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={(a wide hat/circumflex for) estimator/estimate for a quantity},
+    sort={:dia: circumflex}
+    % sort={symbol: estimate}
+]{est}{\ensuremath{\est{\placeholder}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={multivariate Gamma function},
+    sort={Gamma d}
+    % sort={function: Gamma: multivariate}
+]{Gamma_d}{\ensuremath{\Gamma_d}}
+
+\glsxtrnewsymbol[
+    category=notation,
+    description={Kullback--Leibler divergence of the probability density~\(g\) from the probability density~\(f\)},
+    sort={D KL}
+    % sort={stats: KL divergence}
+]{D_KL}{\ensuremath{\KL{f}{g}}}
+
+\glsxtrnewsymbol[
+    category=notation,
+    description={condition number},
+    sort={kappa}
+    % sort={parameter: condition number}
+]{cond}{\ensuremath{\varkappa}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={spherical polar angle},
+    sort={theta var}
+    % sort={coordinate: spatial: angular: polar}
+]{vartheta}{\ensuremath{\vartheta}}
+
+\glsxtrnewsymbol[
+    category=notation,
+    description={conformal Hubble parameter},
+    sort={H conformal}
+    % sort={parameter: Hubble conformal}
+]{cH}{\ensuremath{\mathcal{H}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={(a thick prime for) conformal-time derivative (\(\pdv*{\placeholder}{\tau}\))},
+    sort={:sym: prime thick}
+    % sort={symbol: derivative: conformal time}
+]{d/dtau}{\ensuremath{{\placeholder}^\primeT}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={energy--momentum tensor},
+    sort={T ab}
+    % sort={tensor: energy--momentum}
+]{T_ab}{\ensuremath{\tensor{T}{_a_b}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={Einstein tensor/trace-reversed Ricci curvature tensor},
+    sort={G ab}
+    % sort={tensor: Einstein}
+]{G_ab}{\ensuremath{\tensor{G}{_a_b}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={(an overbar/macron for) background/mean/averaged quantity},
+    sort={:dia: macron}
+    % sort={symbol: background/mean/averaged}
+]{bar}{\ensuremath{\bar{\placeholder}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={(a letter \qts{\(\delta\)} for) perturbation quantity},
+    sort={:sym: delta}
+    % sort={symbol: perturbation}
+]{var}{\ensuremath{\var{\placeholder}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={ordinary hypergeometric function},
+    sort={F 21}
+    % sort={function: hypergeometric: ordinary}
+]{2F1}{\ensuremath{\tensor*[_2]{F}{_1}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={comoving curvature perturbation},
+    sort={R  perturbation}
+    % sort={observable: field: curvature perturbation: comoving}
+]{cR}{\ensuremath{\mathcal{R}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={probability},
+    sort={Pr Probability}
+    % sort={stats: function: probability}
+]{Prob}{\ensuremath{\mathbb{P}}}
+\glsxtrnewsymbol[
+    category=notation,
+    description={Heaviside function},
+    sort={Theta}
+    % sort={function: Heaviside}
+]{Theta}{\ensuremath{\Theta}}

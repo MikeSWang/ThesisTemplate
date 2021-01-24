@@ -1,0 +1,160 @@
+% ------------------------------------------------------------------------
+% config/cmds/cmds_meta.tex
+%
+% Set meta-commands (mostly for maths mode).
+% ------------------------------------------------------------------------
+
+% Add maths environments.
+
+%% Environment 'multline' with 'quad' space as padding.  See the content
+%% of this template for an example of its usage.
+\makeatletter
+    %
+    \newcounter{quadcnt}
+    %
+    \newenvironment{mlines}[1][2]{%
+        \setcounter{quadcnt}{#1}%
+        \start@multline\st@rredfalse%
+        \begingroup%
+            \foreach \n in {1,...,\value{quadcnt}}{\quad}%
+            \ignorespaces%
+        \endgroup
+    }{%
+        \begingroup%
+            \foreach \n in {1,...,\value{quadcnt}}{\quad}%
+            \ignorespaces%
+        \endgroup
+        \iftagsleft@
+            \@xp\lendmultline@
+        \else
+            \@xp\rendmultline@
+        \fi
+        \ignorespacesafterend
+    }
+\makeatother
+
+
+% Define bracketing operator/function maker.  Code recycled from
+% package 'physics'.  Used to define some commands in 'cmd_maths.tex'.
+
+\makeatletter
+    \let\originalleft\left
+    \renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+    %
+    \let\originalright\right
+    \renewcommand{\right}{\aftergroup\egroup\originalright}
+    %
+    \DeclareDocumentCommand\oper{s m}{%
+        \IfBooleanTF#1{%
+            \operatorname{#2}\!%
+        }{%
+            \operatorname{#2}\!{\ifnum\z@=`}\fi\@arguments%
+        }%
+    }
+    \DeclareDocumentCommand\func{s m}{%
+        \IfBooleanTF#1{%
+            #2%
+        }{%
+            \mathop{}\!#2{\ifnum\z@=`}\fi\@arguments%
+        }%
+    }
+    % Flexibly automatically bracket with (), [], {} or ||.
+    \DeclareDocumentCommand\@arguments{
+        t\big t\Big t\bigg t\Bigg g o d() d||
+    }{
+        % Handle manual override of sizing.
+        \IfBooleanTF{#1}{%
+            \let\ltag\bigl \let\rtag\bigr
+        }{%
+            \IfBooleanTF{#2}{%
+                \let\ltag\Bigl \let\rtag\Bigr
+            }{%
+                \IfBooleanTF{#3}{%
+                    \let\ltag\biggl \let\rtag\biggr
+                }{%
+                    \IfBooleanTF{#4}{%
+                        \let\ltag\Biggl \let\rtag\Biggr
+                    }{%
+                        \let\ltag\left \let\rtag\right
+                    }%
+                }%
+            }%
+        }%
+        % Handle actual bracketing.
+        \IfNoValueTF{#5}{%
+            \IfNoValueTF{#6}{%
+                \IfNoValueTF{#7}{%
+                    \IfNoValueTF{#8}{%
+                        ()
+                    }{%
+                        \ltag\lvert{#8}\rtag\rvert
+                    }%
+                }{%
+                    \ltag(#7\rtag) \IfNoValueTF{#8}{}{|#8|}
+                }%
+            }{%
+                \ltag[#6\rtag]
+                \IfNoValueTF{#7}{}{(#7)}
+                \IfNoValueTF{#8}{}{|#8|}
+            }%
+        }{%
+            \ltag\lbrace#5\rtag\rbrace
+            \IfNoValueTF{#6}{}{[#6]}
+            \IfNoValueTF{#7}{}{(#7)}
+            \IfNoValueTF{#8}{}{|#8|}
+        }%
+        \ifnum\z@=`{\fi}
+    }
+\makeatother
+
+
+% Add myriad digit grouping.  This is only relevant to Chinese speakers
+% (and probably Korean and Japanese) who group digits every 4 digits, e.g.
+% an/a American/modern British billion is '10,0000,0000'.  Code recycled
+% from my StackExchange question: https://tex.stackexchange.com/questions/414783/is-it-possible-to-re-group-every-4-digits-in-a-number-with-siunitx-package.
+
+\ExplSyntaxOn
+    \NewDocumentCommand{\groupfour}{O{\mkern1mu} m}{
+        \digit_groupfour:nn { #1 } { #2 }
+    }
+
+    \tl_new:N \l_digit_groupfour_separator_tl
+    \tl_new:N \l_digit_groupfour_number_tl
+
+    \cs_new_protected:Nn \digit_groupfour:nn {
+        \tl_set:Nn \l_digit_groupfour_separator_tl { {#1} }
+        \tl_set:Nx \l_digit_groupfour_number_tl { #2 }
+        \tl_replace_all:Nnn \l_digit_groupfour_number_tl { ~ } { }
+        \tl_reverse:N \l_digit_groupfour_number_tl
+        \regex_replace_all:nnN
+            { [0-9]{4} }  % search
+            { \0 \c{l_digit_groupfour_separator_tl} }  % replace
+            \l_digit_groupfour_number_tl  % token list
+        \tl_reverse:N \l_digit_groupfour_number_tl
+        \regex_replace_once:nnN
+            { \A \c{l_digit_groupfour_separator_tl} }
+            { }
+            \l_digit_groupfour_number_tl
+        \tl_use:N \l_digit_groupfour_number_tl
+    }
+\ExplSyntaxOff
+
+
+% Add linebreak-at-comma compatible maths mode command.  This helps with
+% line breaking for a long inline maths formula. Code recycled from
+% https://tex.stackexchange.com/questions/1959/allowing-line-break-at-in-inline-math-mode
+
+\newcommand{\splitatcommas}[1]{%
+    \begingroup
+    \ifnum\mathcode`,="8000
+    \else
+        \begingroup\lccode`~=`, \lowercase{\endgroup
+            \edef~{%
+                \mathchar\the\mathcode`, \penalty0 \noexpand%
+                \hspace{0pt plus 1ex}%
+            }%
+        }\mathcode`,="8000
+    \fi
+    #1%
+    \endgroup
+}

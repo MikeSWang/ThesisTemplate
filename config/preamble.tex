@@ -1,0 +1,60 @@
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% config/preamble.tex
+%
+% Document preamble.
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% --------------------------
+%     PACKAGE MANAGEMENT
+% --------------------------
+
+% Resolve conflicts between class 'memoir' and packages.  See file
+% for details.
+\input{config/pkgs/pkg_fixes}
+
+% Load packages.  See file for details.
+\input{config/pkgs/pkg_list}
+
+% Load package configurations.  See file for details.
+\input{config/pkgs/pkg_rc}
+
+
+% ---------------------------
+%     DOCUMENT STYLESHEET
+% ---------------------------
+
+% Load typesetting configurations related to the document class, document
+% layout and components, which are not specific to individual packages.
+% See each file for details.
+
+\input{config/profiles/fontconf}
+\input{config/profiles/core}
+\input{config/profiles/titlepage}
+\input{config/profiles/frontmatter}
+\input{config/profiles/backmatter}
+
+
+% ---------------------------
+%     USER CUSTOMISATIONS
+% ---------------------------
+
+% Commands
+% ------------
+
+% Load custom commands.  Many typographically tweaked commands are
+% provided in the files loaded below.  See file for details.
+
+\input{config/cmds/cmd_meta}
+\input{config/cmds/cmd_texts}
+\input{config/cmds/cmd_maths}
+
+
+% Resources
+% -------------
+
+% Load resources to be used as document contents, e.g. glossary entries
+% and bibliography aliases etc.  See file for details.
+
+\input{contents/resources/abbreviations}
+\input{contents/resources/notations}
+\input{contents/resources/refaliases}

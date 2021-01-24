@@ -1,0 +1,16 @@
+% ------------------------------------------------------------------------
+% config/pkgs/pkg_fixes.tex
+%
+% Resolve conflicts between packages and the class.
+% ------------------------------------------------------------------------
+
+% Fix class 'memoir' conflicts with packages.
+\let\ordinal\relax  % with package 'datetime'
+\let\Cref\relax  % with package 'cleveref'
+\let\newfloat\relax  % with package 'floatrow'
+
+% Load package 'lmodern' early to resolve font size substitutions
+% occuring in the default Computer Modern fonts. Also fix any
+% potential package conflicts.
+\usepackage{lmodern}
+\let\mathbf\relax  % with package 'newtxmath'

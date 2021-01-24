@@ -1,0 +1,68 @@
+% ------------------------------------------------------------------------
+% contents/resources/abbreviations.tex
+%
+% Provides entries for abbreviations compiled as a glossary.  Many entries
+% have been retained in this template for the user to become familiar
+% with package 'glossaries-extra'.
+% ------------------------------------------------------------------------
+
+% Add explanatory texts before the glossary.
+\apptoglossarypreamble[abbreviations]{%
+    Add any explanatory text here. For instance, ``This is an exhaustive list of scientific abbreviations, including initialisms and acronyms, appearing in this thesis. Wherever applicable, an up-to-date web address is provided.''\bigskip
+}
+
+% Add topics.
+\newabbreviation[category=topic]{LSS}{LSS}{large-scale structure}
+\newabbreviation[
+    category=topic,
+    name={ΛCDM},
+    description={Lambda cold dark matter (model)},
+    sort={LCDM}
+]{LCDM}{ΛCDM}{Lambda cold dark matter}
+\newabbreviation[
+    category=topic,
+    description={Friedmann--Lema\^itre--Robertson--Walker (metric/spacetime)}
+]{FLRW}{FLRW}{Friedmann--Lema\^itre--Robertson--Walker}
+\newabbreviation[
+    category=topic,
+    longplural={{supernov\ae}},
+    shortplural={SNe}
+]{SN}{SN}{supernova}
+\newabbreviation[
+    category=topic,
+    name={Ly-α},
+    description={Lyman-alpha (forest/line)}
+]{Lya}{Ly-α}{Lyman-alpha}
+
+% Add experiment names.
+\newabbreviation[
+    category=experiment,
+    description={Baryon Oscillation Spectroscopic Survey (\weblink{https://www.sdss.org/surveys/boss})}
+]{BOSS}{BOSS}{Baryon Oscillation Spectroscopic Survey}
+\newacronym[
+    category=experiment,
+    description={extended \glsxtrshort{BOSS} (\weblink{https://www.sdss.org/surveys/eboss})}
+]{eBOSS}{eBOSS}{extended \glsxtrshort{BOSS}}
+\newacronym[
+    category=experiment,
+    name={Planck},
+    description={\textit{Planck} (mission/satellite) (\weblink{https://sci.esa.int/web/planck})},
+    sort={Planck}
+]{Planck}{\textit{Planck}}{\textit{Planck}}
+\newabbreviation[
+    category=experiment,
+    description={Spectro-\kern-0.35pt Photometer for the History of the Universe, Epoch of Reionization, and Ices Explorer (\weblink{https://spherex.caltech.edu})}
+]{SPHEREx}{SPHEREx}{Spectro-\kern-0.35pt Photometer for the History of the Universe, Epoch of Reionization, and Ices Explorer}
+
+%% The first instances of the following abbreviations are shown as if
+%% they are repeated instances (i.e. in abbreviated forms).
+
+\glsunset{eBOSS}
+\glsunset{Planck}
+
+% Add code names.
+\newabbreviation[
+    category=code,
+    name={CAMB},
+    description={Code for Anisotropies in the Microwave Background (\weblink{https://camb.info})}
+]{camb}{camb}{Code for Anisotropies in the Microwave Background}

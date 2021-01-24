@@ -1,0 +1,61 @@
+% ------------------------------------------------------------------------
+% contents/frontmatter/colophon.tex
+%
+% This is the colophon page and must include must include declaration;
+% typesetting and copyright information is optional.
+% ------------------------------------------------------------------------
+
+% Force to start on a blank page regardless of cover page typesetting.
+\clearpage
+\thispagestyle{empty}
+
+% Add bookmark as well as hyperlink target.
+\hypertarget{colophon}{}
+\bookmark[page=\thesheetsequence]{Colophon}
+
+\begin{colophon}
+
+% Drop draft version watermark.
+\ifdraftdoc
+	\textcolor{gray}{\textbf{\ttfamily\bfseries v.\today}}
+	\vfill
+\else
+    \null\vfill
+\fi
+
+% Drop declaration and word count.
+
+\begin{minipage}{\textwidth}
+    Whilst registered as a candidate for the above degree, I have not been registered for any other research award. The results and conclusions embodied in this thesis are the work of the named candidate and have not been submitted for any other academic award.
+
+    \bigskip
+
+    {\quickwordcount{thesis}}
+
+    \bigskip\bigskip\bigskip
+
+    %% Licence dimensions.
+    \newdimen\licencewidth
+    \settowidth{\licencewidth}{\includegraphics[scale=0.925]{CC-BY-NC.eps}}
+
+    \begin{minipage}[c]{\licencewidth}
+        \vspace{-3pt}\includegraphics[scale=0.925]{CC-BY-NC.eps}
+    \end{minipage}%
+    \hspace{1em}%
+    \begin{minipage}{\textwidth-\licencewidth-1em}
+        The contents of this work are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License (\url{http://creativecommons.org/licenses/by-nc/4.0/}).
+    \end{minipage}%
+    \par
+
+    \bigskip\smallskip
+
+    \textcopyright\ Mike Shengbo Wang \copyrightyear. Typeset with {\XeLaTeX} in the \textit{memoir} class.
+\end{minipage}
+
+\end{colophon}
+
+% Force to clear the page unconditionally.
+\clearpage
+
+% % Reset interior page numbering (cautious and likely redundant).
+% \setcounter{page}{1}

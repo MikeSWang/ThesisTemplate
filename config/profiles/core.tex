@@ -1,0 +1,324 @@
+% ------------------------------------------------------------------------
+% config/profiles/core.tex
+%
+% Set the main stylesheet for most part of the thesis.  See class 'memoir'
+% and LaTeX documentations for details.  Modify as appropriate.
+% ------------------------------------------------------------------------
+
+% Styles and Layouts
+% ----------------------
+
+% Set document-wide tolerance and penalties.  Tweak as appropriate.
+
+% \brokenpenalty=50
+% \clubpenalty=9996
+% \displaywidowpenalty=1602
+% \predisplaypenalty=100
+% \postdisplaypenalty=1549
+% \widowpenalty=9999
+\hfuzz=1pt
+
+
+% Set the layout of contents tables/lists.
+
+\setpnumwidth{2.0em}
+\setrmarg{2.0em plus 1fil}
+
+\setlength{\cftbeforesectionskip}{0.1\baselineskip}
+\setlength{\cftbeforetableskip}{0.5\baselineskip plus 0.5\baselineskip}
+\setlength{\cftbeforefigureskip}{0.5\baselineskip plus 0.5\baselineskip}
+
+\setlength{\cfttablenumwidth}{3.2em}
+\setlength{\cftfigurenumwidth}{3.2em}
+
+\renewcommand{\cftdotsep}{2.0}
+
+
+% Set the styles of the document hierarchy (chapters, sections etc.).
+
+\setsecnumdepth{subsection}  % numbering depth
+
+%% Set the layout of chapter title pages.
+
+\copypagestyle{chapter}{plain}
+\makeoddfoot{chapter}{}{}{}
+\makeevenfoot{chapter}{}{}{}
+
+%% Set chapter heading style (named 'providence' in this template).
+
+\renewcommand*{\chaptitlefont}{\hdfont\bfseries\HUGE}
+
+\makeatletter
+    \newsavebox{\chapicon@chapter}
+    %
+    \newcommand\chapicon@chapter@marker{%
+        \savebox\chapicon@chapter{%
+            \resizebox{!}{1cm}{%
+                \fboxsep=2.5pt%
+                \colorbox{argent!200}{\vbox to 0.8em %
+                    { \vfil\hbox to 0.8em {%
+                        \hfil\color{white}\bfseries\thechapter\hfil
+                    } \vfil}%
+                }%
+            }%
+        }%
+        \usebox{\chapicon@chapter}%
+    }
+    %
+    \newcommand\chapicon@chaptermarker{%
+        \savebox\chapicon@chapter{\chapicon@chapter@marker}%
+        \makebox[1cm][\align]{\usebox\chapicon@chapter}%
+    }
+    %
+    \makechapterstyle{providence}{%
+        \renewcommand\printchaptername{}%
+        \renewcommand\printchapternum{%
+            \if@twoside%
+                \checkoddpage%
+                \ifoddpage%
+                    \raggedleft%
+                    \def\align{r}%
+                \else%
+                    \raggedright%
+                    \def\align{l}%
+                \fi%
+            \else%
+                \hfill%
+                \def\align{r}%
+            \fi%
+            \null\chapicon@chaptermarker%
+        }%
+        \renewcommand\printchapternonum{%
+            \if@twoside%
+                \checkoddpage%
+                \ifoddpage%
+                    \raggedleft%
+                \else%
+                    \raggedright%
+                \fi%
+            \else%
+                \hfill%
+            \fi%
+        }%
+        \renewcommand\printchaptertitle[1]{%
+            \if@twoside%
+                \checkoddpage%
+                \ifoddpage%
+                    \flushright%
+                \else%
+                    \flushleft%
+                \fi%
+            \else%
+                \flushright%
+            \fi%
+            \chaptitlefont##1\par%
+        }%
+        \renewcommand\afterchaptertitle{\vspace{25mm}}%
+    }
+\makeatother
+
+\chapterstyle{providence}
+
+%% Set section heading style.
+
+\setsecheadstyle{\hdfont\bfseries\Large}
+\setsubsecheadstyle{\hdfont\bfseries\large}
+
+
+% Set main matter style.
+
+%% Set document-wide spacings.
+
+\setSingleSpace{1.1}
+\SingleSpacing  % also apply to package 'natbib' command ``bibpreamble``
+
+\setlength{\parindent}{4ex}
+\setlength{\textfloatsep}{15pt plus 2pt}
+
+%% Set typical page layouts.
+
+\clearmark{section}
+
+\makepagestyle{formal}
+\makeatletter
+    \makeoddhead{formal}{%
+    }{%
+        \sffamily\normalsize%
+        \addfontfeature{Scale=0.9,LetterSpace=13}%
+        \spaceskip1.5ex%
+        \rightmark%
+    }{%
+        \sffamily\normalsize%
+        \thepage%
+    }
+    \makeevenhead{formal}{%
+        \sffamily\normalsize%
+        \thepage%
+    }{%
+        \sffamily\normalsize%
+        \addfontfeature{Scale=0.9,LetterSpace=13}%
+        \spaceskip1.5ex%
+        \leftmark%
+    }{}
+    \makeoddfoot{formal}{}{}{}
+    \makeevenfoot{formal}{}{}{}
+\makeatother
+
+\makeatletter
+    \makepsmarks{formal}{
+        \createmark{chapter}{both}{nonumber}{\@chapapp}{}
+    }
+\makeatother
+
+%%% Merge 'formal' style and 'empty' style (for pages with only floats)
+%%% into 'publisher' style.
+\mergepagefloatstyle{publisher}{formal}{empty}
+
+%% Set footnote style.
+
+\feetatbottom
+\feetbelowfloat
+
+\newlength{\footmarkspan}
+\setlength{\footmarkspan}{\footparindent}
+\setlength{\footmarkwidth}{0pt}
+\setlength{\footmarksep}{0pt}
+\setlength{\footparindent}{\parindent}
+\footmarkstyle{%
+    \makebox[\footmarkspan][l]{\textsuperscript{#1}}%
+}
+
+
+% Miscellaneous Elements
+% --------------------------
+
+% Define environment 'inset' for standalone inserts.
+
+\newenvironment{inset}{%
+    \cleardoublepage
+    \thispagestyle{empty}
+    \vspace*{0.25\textheight}\par
+    \begin{center}
+    \hdfont\bfseries\color{\inking}  % use theme colour
+}{
+    \par
+    \vfill
+    \pgfornament[color=\inking,width=7mm]{24}\par  % use theme colour
+    \vspace{0.15\textheight}\par
+    \end{center}
+}
+\newcommand{\insetpage}[1]{\begin{inset}#1\end{inset}}  % shortcut command
+
+
+% Define special command to enlarge or shrink the usable area on certain
+% pages to suppress artefacts and warnings related to 'overfull' and
+% 'underfull' '\vbox'.
+
+\newcommand{\footsaviour}[1][]{%
+    \enlargethispage{#1\baselineskip}%
+}
+
+
+% Define wrapper command 'lsmode' for landscape full-page figures.
+
+\newlength\normalwd
+\newcommand{\lsmode}[1]{%
+    \setlength{\normalwd}{\textwidth}%
+    \afterpage{\begin{landscape}#1\end{landscape}}%
+}
+
+
+% Add URL formatting command, which deals with line breaking issues
+% typically found for URLs.  This removes prefixes such as 'http://',
+% 'www' etc.  A 'fontawesome' icon glyph is used to indicate a web link
+% (unless the starred vertsion is used). Code recycled from
+% https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
+% and https://tex.stackexchange.com/questions/285823/multi-substring-replace.
+% E.g. ``\weblink{www.google.co.uk}`` is shown as an weblink icon and
+% the hyperlinked text 'google.co.uk'.
+
+\expandafter\def\expandafter\UrlBreaks\expandafter{%
+    \UrlBreaks%  % save the current one
+    \do\a\do\b\do\c\do\d\do\e\do\f\do\g%
+    \do\h\do\i\do\j\do\k\do\l\do\m\do\n%
+    \do\o\do\p\do\q\do\r\do\s\do\t%
+    \do\u\do\v\do\w\do\x\do\y\do\z%
+    \do\A\do\B\do\C\do\D\do\E\do\F\do\G%
+    \do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+    \do\O\do\P\do\Q\do\R\do\S\do\T%
+    \do\U\do\V\do\W\do\X\do\Y\do\Z%
+    \do0\do1\do2\do3\do4\do5\do6\do7\do8\do9%
+    \do=\do/\do.\do:\do\*\do\-\do\~\do\'\do\"\do\\%
+}  % none other technique works if ``\href`` is used instead of ``\url``
+
+%TC:macro \weblink [ignore]
+\NewDocumentCommand\weblink{s m}{%
+    \IfBooleanTF#1{%
+        \def\prefix{}%
+    }{%
+        \def\prefix{%
+            \raisebox{-0.5pt}{\scriptsize\,\faExternalLink}%
+            \nobreak\hspace{1mm}\nobreak%
+        }%
+    }%
+    \saveexpandmode\noexpandarg%
+    \StrSubstitute{#2}{https://}{}[\wlink]%
+    \expandafter\StrSubstitute\expandafter{\wlink}{http://}{}[\wlink]%
+    \expandafter\StrSubstitute\expandafter{\wlink}{www.}{}[\wlink]%
+    \restoreexpandmode%
+    \href{#2}{\prefix\nolinkurl{\wlink}}%
+}
+
+
+% Add a visual break between paragraphs to indicate a change of topic.
+% Usually fleuron symbols are used, but note the Unicode code for fleuron
+% symbols differ between different typefaces.  For package 'libertine',
+% the fleuron glyph used is 'U+E001' here.  The starred variant reflects
+% the glyph.
+
+\NewDocumentCommand\topicbreak{s}{%
+    \IfBooleanTF#1{%
+        \fancybreak{%
+            \vspace*{1em}%
+            \raisebox{0.0\baselineskip}{\reflectbox{\symbol{"E001}}}%
+            \vspace{1em}%
+        }
+    }{%
+        \fancybreak{%
+            \vspace*{1em}%
+            \raisebox{0.0\baselineskip}{\symbol{"E001}}%
+            \vspace{1em}%
+        }
+    }%
+}
+
+
+% Redefine equation references in bracketed form.  An equation is referred
+% to inside round brackets with optional pre-text.
+% E.g. ``\beqref[see ]{eq:equation}`` may show '(see eq.~5)'
+% partly hyperlinked.
+
+%TC:macro \beqref [option:word,ignore]
+\makeatletter
+    \let\originalref\ref
+    \newcommand{\beqref}[2][]{%
+        \begingroup%
+            \let\ref\@refstar%
+            (#1\hyperref[#2]{eq.~\originalref{#2}})%
+        \endgroup%
+    }
+\makeatother
+
+
+% Define 'oneside'/'twoside'-dependent command.
+
+%TC:macro \oneortwosidecmd [ignore,ignore]
+\makeatletter
+\newcommand{\oneortwosidecmd}[2]{
+    \if@twoside%
+        #2%
+    \else%
+        #1%
+    \fi%
+}
+\makeatother

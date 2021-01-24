@@ -1,0 +1,120 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DOCTORAL THESIS TEMPLATE
+%
+% Copyright (C) 2021 MS Wang
+%
+% Licensed under GPL v3.0 (https://www.gnu.org/licenses/gpl-3.0.en.html).
+% A copy of the licence can be found in the current directory.
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ===========================
+%     META-CONFIGURATIONS
+% ===========================
+
+% Load document meta-configurations.  See file for details.
+\input{config/meta}
+
+% Add any editorial commands/shortcuts here if they need to be placed
+% before the main preamble.
+% E.g. ``\renewcommand{\status}{final}``.
+%
+
+% Declare document class & options.  Modify as appropriate.
+\documentclass[a4paper,12pt,twoside,openany,\status]{memoir}
+
+
+% ================
+%     PREAMBLE
+% ================
+
+% Load document preamble including packages, package configurations,
+% and typesetting profiles.  See file for details.
+\input{config/preamble}
+
+% Add any additional editorial commands/shortcuts here.
+% E.g. ``\renewcommand{\change}[1]{{\color{red}#1}}``.
+%
+
+
+% ================
+%     CONTENTS
+% ================
+
+\begin{document}
+
+% Refer to the documentation of 'texcount'.  Throughout this template,
+% markup tags beginning with ``%TC:`` are used for the 'texcount' program.
+
+
+% Front Matter
+% ================
+
+\frontmatter
+
+%TC:ignore
+\input{contents/frontmatter/cover}
+\input{contents/frontmatter/colophon}
+%TC:endignore
+
+% Drop an insert for the standalone abstract.
+\input{contents/frontmatter/abstract}
+
+%TC:ignore
+\input{contents/frontmatter/epigraph}
+\input{contents/frontmatter/contents}
+\input{contents/frontmatter/preface}
+%TC:endignore
+
+
+% Main Matter
+% ===============
+
+\mainmatter
+
+% Drop an insert for the repeated thesis title.
+\begin{inset}
+    \makeatletter\@title\makeatother
+\end{inset}
+
+% Declare line spacing depending on whether in 'review' mode.
+\ifrevmode
+    \OnehalfSpacing
+\else
+    \SingleSpacing
+\fi
+
+\input{contents/chapter-intro}
+\input{contents/chapter-analysis}
+
+
+% Back Matter
+% ===============
+
+% Issue appendices before ``\backmatter``.
+\appendix
+
+% Drop an insert for the beginning of appendices.
+\insetpage{\Huge{Appendices}}
+
+\input{contents/appx-background}
+
+\backmatter
+
+%TC:ignore
+% The bibliography style loaded below automatically convert hyphens
+% to en dashes in page numbers.  Check your own .bib and .bst files to
+% see if hyphen-to-dash conversion needs to be enabled.
+\nocite{*}  % for demo purpose
+\bibliographystyle{providence}
+\bibliography{publications,software}
+
+\ifcompleted
+    % Drop an insert for standalone acknowledgements (if any).
+    \InputIfFileExists{contents/backmatter/acknowledgements}{}{}
+
+    % Append any file attachments, e.g. the ethics certificate and form.
+    \input{contents/backmatter/embedded_file}
+\fi
+%TC:endignore
+
+\end{document}

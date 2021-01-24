@@ -1,0 +1,66 @@
+% ------------------------------------------------------------------------
+% contents/frontmatter/cover.tex
+%
+% Print thesis cover which includes title, author, submission
+% month and thesis award notice.
+% ------------------------------------------------------------------------
+
+% Set cover geometry.
+\newgeometry{inner=40mm,outer=40mm,top=20mm,bottom=20mm}
+
+% Turn off page numbering for the cover page.
+\pagenumbering{gobble}
+
+\begin{titlingpage}
+
+% Drop title, author and date.
+\begingroup
+    \hfuzz=150pt  % HACK: have not had time to fix 'overfull \hbox' here
+    \maketitle
+\endgroup
+
+% NOTE: This must come after ``\maketitle`` for some weird reason.
+\thispagestyle{titlingpage}
+
+% Add bookbook for the cover page.
+\bookmark[page=\thesheetsequence]{Title Page}
+
+% Drop logo.
+\begin{tikzpicture}[
+    remember picture,
+    overlay,
+    shift=(current page.north east),
+    x=1cm,
+    y=1cm
+]
+    \node at (-1.25, -1.2) [anchor=north east] {%
+        \includegraphics[height=18mm]{Logo}%
+    };
+\end{tikzpicture}
+
+% Drop ornament.
+\begin{center}
+    \psvectorian[width=0.33\paperwidth]{88}
+\end{center}
+
+% Drop notice.
+\begin{center} \small
+    The thesis is submitted in partial fulfilment of the requirements for \\
+    the award of the degree of \\
+    {\epicstyle Doctor of Philosophy} \\
+    of the \\
+    {\scshape University of Portsmouth}.
+\end{center}
+
+\vspace{-7.5mm}
+
+\titlingpageend{\clearpage}{\clearpage}
+
+\end{titlingpage}
+
+% Restore interior geometry.
+\restoregeometry
+
+% Reset interior page numbering (cautious and possibly redundant).
+\pagenumbering{roman}
+\setcounter{page}{0}
