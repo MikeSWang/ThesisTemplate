@@ -1,12 +1,14 @@
 % ------------------------------------------------------------------------
 % config/cmds/cmds_meta.tex
 %
-% Set meta-commands (mostly for maths mode).
+% Meta-commands (mostly for constructing maths-mode commands).
 % ------------------------------------------------------------------------
 
 % Add maths environments.
 
-%% Environment 'multline' with 'quad' space as padding.  See the content
+%% Environment 'multline' with multiples of 'quad' space as padding, e.g.
+%% ``\begin{mlines}[2] \end{mlines}`` is equivalent to ``\begin{multline}
+%% \qquad\quad <equation> \qquad\qquad \end{multline}``.  See the content
 %% of this template for an example of its usage.
 \makeatletter
     %
@@ -34,8 +36,11 @@
 \makeatother
 
 
-% Define bracketing operator/function maker.  Code recycled from
-% package 'physics'.  Used to define some commands in 'cmd_maths.tex'.
+% Add meta-commands.
+
+%% Define command constructor for defining functions and operators with
+%% automatically resizing delimiters.  Code recycled from package
+%% 'physics'.  Used to define some commands in 'cmd_maths.tex'.
 
 \makeatletter
     \let\originalleft\left
@@ -108,10 +113,10 @@
 \makeatother
 
 
-% Add myriad digit grouping.  This is only relevant to Chinese speakers
-% (and probably Korean and Japanese) who group digits every 4 digits, e.g.
-% an/a American/modern British billion is '10,0000,0000'.  Code recycled
-% from my StackExchange question: https://tex.stackexchange.com/questions/414783/is-it-possible-to-re-group-every-4-digits-in-a-number-with-siunitx-package.
+%% Add myriad digit grouping.  This is only relevant to Chinese speakers
+%% (and probably Korean and Japanese) who group digits every 4 digits,
+%% e.g. an/a American/modern British billion is '10,0000,0000'.  Code
+%% recycled from my StackExchange question: https://tex.stackexchange.com/questions/414783/is-it-possible-to-re-group-every-4-digits-in-a-number-with-siunitx-package.
 
 \ExplSyntaxOn
     \NewDocumentCommand{\groupfour}{O{\mkern1mu} m}{
@@ -140,9 +145,9 @@
 \ExplSyntaxOff
 
 
-% Add linebreak-at-comma compatible maths mode command.  This helps with
-% line breaking for a long inline maths formula. Code recycled from
-% https://tex.stackexchange.com/questions/1959/allowing-line-break-at-in-inline-math-mode
+%% Add linebreak-at-comma compatible maths mode wrapper command.
+%% This helps with line breaking for a long inline maths formula.
+%% Code recycled from https://tex.stackexchange.com/questions/1959/allowing-line-break-at-in-inline-math-mode
 
 \newcommand{\splitatcommas}[1]{%
     \begingroup

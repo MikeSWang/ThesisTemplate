@@ -1,9 +1,9 @@
 % ------------------------------------------------------------------------
 % config/pkgs/pkg_rc.tex
 %
-% Set up package configurations.  Tweak various settings to achieve
-% desired typesetting outcomes.  See individual package documentation
-% for further instructions.
+% Package configurations.  Tweak various settings to achieve desired
+% typesetting outcomes.  See individual package documentation for
+% further instructions.
 % ------------------------------------------------------------------------
 
 % Package: amsmath
@@ -31,7 +31,7 @@
     textfont={small}
 }
 
-% Set numbering for continuously labelled figures.
+% Set numbering format for consecutively numbered figures in a series.
 \renewcommand{\theContinuedFloat}{(\alph{ContinuedFloat})}
 
 
@@ -51,6 +51,7 @@
 \crefrangeformat{equation}{equations~#3(#1)#4--#5(#2)#6}
 
 \newcommand{\crefrangeconjunction}{--}
+
 
 % Add local, temporary switches between bracketed, abbreviated references
 % (``\abbrvcrefnames``) and full references (``\fullcrefnames``) by
@@ -157,12 +158,11 @@
 
 \makeglossaries
 
-% Determine whether or not to add hyperlinks for certain categories.
+% Determine whether to disable hyperlinks for certain glossary categories.
 \glssetcategoryattribute{topic}{nohyper}{true}
 \glssetcategoryattribute{notation}{nohyper}{true}
 
-% Use only short form for certain acronyms, and only short form in small
-% caps for code names.
+% Use specific formats for certain glossary categories.
 \setabbreviationstyle[acronym]{short}
 \setabbreviationstyle[code]{short-sc}
 
@@ -224,7 +224,8 @@
 
 % Change typesetting for individual glossary elements.
 \renewcommand{\glsnamefont}[1]{\textbf{#1}}
-% \renewcommand{\glsxtrfullsep}[1]{~}
+% \renewcommand{\glsxtrfullsep}[1]{~}  % disabled due to 'overfull \hbox'
+                                       % difficulty
 
 
 % Package: graphics
@@ -321,7 +322,6 @@
 % --------------------
 
 % Try to suppress innocuous warnings.
-
 \WarningFilter{babel}{The following font is not a babel standard family}
 \WarningFilter{babel}{The following fonts are not babel standard families}
 \WarningFilter{caption}{Unused \captionsetup}
@@ -347,7 +347,6 @@
 % -------------------
 
 % Load 'tikz' libraries as appropriate.
-
 \usetikzlibrary{arrows.meta,calc,svg.path}
 
 

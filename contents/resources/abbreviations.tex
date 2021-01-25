@@ -1,17 +1,20 @@
 % ------------------------------------------------------------------------
 % contents/resources/abbreviations.tex
 %
-% Provides entries for abbreviations compiled as a glossary.  Many entries
-% have been retained in this template for the user to become familiar
-% with package 'glossaries-extra'.
+% Entries for the abbreviation glossary.  The entries below have been
+% retained in this template for the user to become familiar with
+% package 'glossaries-extra'.
 % ------------------------------------------------------------------------
 
 % Add explanatory texts before the glossary.
+
 \apptoglossarypreamble[abbreviations]{%
     Add any explanatory text here. For instance, ``This is an exhaustive list of scientific abbreviations, including initialisms and acronyms, appearing in this thesis. Wherever applicable, an up-to-date web address is provided.''\bigskip
 }
 
-% Add topics.
+
+% Add 'topic' glossary entries.
+
 \newabbreviation[category=topic]{LSS}{LSS}{large-scale structure}
 \newabbreviation[
     category=topic,
@@ -34,7 +37,9 @@
     description={Lyman-alpha (forest/line)}
 ]{Lya}{Ly-α}{Lyman-alpha}
 
-% Add experiment names.
+
+% Add 'experiment' names.
+
 \newabbreviation[
     category=experiment,
     description={Baryon Oscillation Spectroscopic Survey (\weblink{https://www.sdss.org/surveys/boss})}
@@ -56,11 +61,12 @@
 
 %% The first instances of the following abbreviations are shown as if
 %% they are repeated instances (i.e. in abbreviated forms).
-
 \glsunset{eBOSS}
 \glsunset{Planck}
 
-% Add code names.
+
+% Add 'code' names.
+
 \newabbreviation[
     category=code,
     name={CAMB},

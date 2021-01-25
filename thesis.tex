@@ -4,7 +4,12 @@
 % Copyright (C) 2021 MS Wang
 %
 % Licensed under GPL v3.0 (https://www.gnu.org/licenses/gpl-3.0.en.html).
-% A copy of the licence can be found in the current directory.
+% A copy of the licence, 'LICENCE', can be found in the current directory.
+%
+% This template can be used directly as source files with appropriate
+% modifications, or some elements can be borrowed to write new source
+% files.  See 'README.md' for basic instructions and also the various
+% comments in this template for additional details.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % ===========================
@@ -16,7 +21,7 @@
 
 % Add any editorial commands/shortcuts here if they need to be placed
 % before the main preamble.
-% E.g. ``\renewcommand{\status}{final}``.
+% E.g. ``\renewcommand{\status}{final}``
 %
 
 % Declare document class & options.  Modify as appropriate.
@@ -100,16 +105,18 @@
 
 \backmatter
 
+\nocite{*}  % for demo purpose
+
 %TC:ignore
 % The bibliography style loaded below automatically convert hyphens
 % to en dashes in page numbers.  Check your own .bib and .bst files to
 % see if hyphen-to-dash conversion needs to be enabled.
-\nocite{*}  % for demo purpose
 \bibliographystyle{providence}
 \bibliography{publications,software}
 
 \ifcompleted
-    % Drop an insert for standalone acknowledgements (if any).
+    % Drop an insert for standalone acknowledgements (if any).  The file
+    % shown below is not in this template and the command has no effect.
     \InputIfFileExists{contents/backmatter/acknowledgements}{}{}
 
     % Append any file attachments, e.g. the ethics certificate and form.

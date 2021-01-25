@@ -1,9 +1,8 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % providence.bst
 %
-% Set bibliography style and elements.  This is based on the JHEP style
-% guide with some modifications (marked in comments below).  Tweak as
-% appropriate.
+% Bibliography style and elements.  This is based on the JHEP style guide
+% with modifications (see marked comments below).  Tweak as appropriate.
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % JHEP bibliography style ver. 2.11
@@ -29,7 +28,7 @@
 %
 % This work consists of the file JHEP.bst.
 
-% CHANGES made by MS Wang, Autumn/Winter 2020 (marked by ``% MSW %``):
+%% CHANGES made by MS Wang, Autumn/Winter 2020 (marked by ``% MSW %``):
 %% File name changed to providence.bst;
 %% Removal of full stop in initials
 %%     (use ``\relax`` to preserve hyphenated names);

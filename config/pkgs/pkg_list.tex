@@ -1,8 +1,8 @@
 % ------------------------------------------------------------------------
 % config/pkgs/pkg_list.tex
 %
-% Necessary packages.  See individual package documentation for details.
-% Packages commented out may also be of use to the user.
+% Imported packages.  See individual package documentation for details.
+% Packages commented out may also be of interest.
 % ------------------------------------------------------------------------
 
 % \usepackage{academicons}
@@ -23,9 +23,9 @@
 \usepackage{datetime}
 
 \usepackage[inline]{enumitem}
-\usepackage{etoolbox}
+\usepackage{etoolbox}  % for defining/modifying complex commands
 
-\usepackage{floatrow}  % for full-page landscape figures
+\usepackage{floatrow}  % lay out full-page landscape figures
 \usepackage{fnpct}  % fix class 'memoir' multi-footnote
                     % comma vertical position
 \usepackage[no-math,quiet]{fontspec}  % perhaps best to be loaded after
@@ -35,14 +35,14 @@
 \usepackage[xetex]{geometry}
 \usepackage[
     automake,nomain,abbreviations,symbols,toc,nonumberlist
-]{glossaries-extra}
+]{glossaries-extra}  % technical; may need multiple compilations
 \usepackage[final]{graphicx}
 
 \usepackage{isomath}
 
-\usepackage{journalref}  % local package
+\usepackage{journalref}  % local package; path added in '.latexmkrc'
 
-\usepackage{kantlipsum}
+\usepackage{kantlipsum}  % for demo purpose only
 
 \usepackage{lettrine}
 \usepackage{libertine}

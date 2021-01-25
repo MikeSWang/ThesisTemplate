@@ -1,11 +1,11 @@
 \chapter{Analysis}
 \label{chap:analysis}
 
-This weight is explicitly dependent on the wavenumber~\(k\) of the band power spectrum one attempts to estimate; in practice, it suffices to set it to a constant value typical of the power spectrum in the range of scales of interest, \eg\ \(\bar{P} = \groupfour{10000}\,\si{\per\cubic\mega\parsec}\) set in the \gls{BOSS} Data Release 12 analysis.
+There are far more than \(\groupfour{1000000}\) galaxies in the \gls{BOSS} Data Release 12 analysis.
     \begin{equation}
         \legendre{\ell}(\lowerh{-0.2ex}{\vu*{k} \vdot \vu*{s}}) \equiv \frac{4\pi}{2\ell + 1} \sum_{m=-\ell}^\ell \sphY{\ell m}(\lowerh{-0.2ex}{\vu*{k}}) \sphYc{\ell m}(\vu*{s}) \,.
     \end{equation}
-\Rcite{Wang2020b} argues that\textellipsis\ The coefficients~\(A^{\ell_1}_{\ell L}\) can be found from the identity
+\Rcite{Wang2020b} argues that a spherical Fourier decomposition is superior. The coefficients~\(A^{\ell_1}_{\ell L}\) can be found from the identity
     \begin{equation}
         \legendre*{\ell} \legendre*{L} \equiv \sum_{\ell' = 0}^{\min{\!\qty{\ell,L}}} \frac{2\ell + 2L - 4\ell' + 1}{2\ell + 2L - 2\ell' + 1} \frac{C_{\ell - \ell'} \mkern2mu C_{\ell'} \mkern2mu C_{L - \ell'}}{C_{\ell + L - \ell'}} \legendre*{\ell + L - 2\ell'} \,,
     \end{equation}
@@ -34,7 +34,7 @@ where the matrices~\(\mat{M}_{2i}\) are \(\mat{M}_0 = \mat{I}_3\) (the identity 
         \end{pmatrix*} \,.
     \end{alignedat}
     \end{equation}
-To link the two, one may write
+\kant*[10]
     \begin{align}
         \ev{\lowerh{-0.2ex}{\func{\est{P}_\ell}(k)}} &= %
         \begin{multlined}[t][0.75\linewidth]
@@ -49,15 +49,15 @@ To link the two, one may write
     \floatbox[{%
         \capbeside\thisfloatsetup{capbesideposition={right,top},capbesidesep=quad}%
     }]{figure}[\FBwidth]{%
-        \includegraphics[height=0.9\normalwd,trim={0 3mm 0 1mm},clip]{Construction}
+        \includegraphics[height=0.9\normalwd]{Construction}
     }{{%
         \captionsetup{justification=raggedright}
-        \caption[Best-fitting models. {[Reprinted under the Licence]}]{Best-fitting models. Figure taken from Fig.~1 in \citetalias{Wang2020a}.}
-        \label{fig:luminosity function}
+        \caption[Best-fitting models. {[Reprinted under the Licence]}]{\kant*[11][1-2] Figure taken from Fig.~1 in \citetalias{Wang2020a}.}
     }}
 \end{figure}
 }
-Or perhaps
+
+\kant*[12-13]
 \begin{subequations}
     \begin{align}
         \Phi_{\mu\nu} &\deq \kappa_\nu \int r^2 \dd{r} \mkern1.5mu \func{w}(\fid{r}) \func{j_\mu}(\fid{r}) \func{j_\nu}(r) \func{\phi}(r) \func{\bar{n}}(z) \mkern1mu \frac{\func{b_{k_\nu}}(z)}{\func{b_{k_\nu}}(0)} \func{D_1}(z) \,, \\
@@ -65,7 +65,7 @@ Or perhaps
     \end{align}
 \end{subequations}
 
-Do not ignore PNG\@.
+Do not ignore PNG\@. Note `'\verb|\@|' used after capitalised abbreviation before full stop for correct inter-sentence spacing. Do you enjoy using \code{camb}? See if the previous \verb|camb| is a clickable link.
 \begin{table}
     \centering
     \caption[Posterior median estimates.]{Posterior median estimates.}
@@ -81,9 +81,8 @@ Do not ignore PNG\@.
         \bottomrule[1.15pt]
     \end{tabular}
     \endgroup
-    \label{tab:PLE model fits}
 \end{table}
-\kant*[12][1-3] Here the ratio of the two different normalisation factors is
+\kant*[14]
     \begin{mlines}
-        \mathcal{C} \approx \frac{2}{5} \Omega_{\mathrm{m},0}^{-1} \bigg[\pi^{-1/2} \func{\Gamma}(\scriptstyle\frac{5}{6}) \func{\Gamma}(\scriptstyle\frac{5}{3}) (1 - \Omega_{\mathrm{m},0})^{-5/6} \Omega_{\mathrm{m},0}^{-2/3} \\ - \frac{1}{2} (1 - \Omega_{\mathrm{m},0})^{-3/2} \func{\tensor*[_2]{F}{_1}}(\scriptstyle\frac{2}{3}, \scriptstyle\frac{3}{2}; \scriptstyle\frac{5}{3}; - \scriptstyle\frac{\Omega_{\mathrm{m},0}}{1 - \Omega_{\mathrm{m},0}})\bigg]^{-1} \,,
+        \mathcal{C} \approx \frac{2}{5} \Omega_{\mathrm{m},0}^{-1} \bigg[\pi^{-1/2} \func{\Gamma}(\scriptstyle\frac{5}{6}) \func{\Gamma}(\scriptstyle\frac{5}{3}) (1 - \Omega_{\mathrm{m},0})^{-5/6} \Omega_{\mathrm{m},0}^{-2/3} \\ - \frac{1}{2} (1 - \Omega_{\mathrm{m},0})^{-3/2} \func{\tensor*[_2]{F}{_1}}(\scriptstyle\frac{2}{3}, \scriptstyle\frac{3}{2}; \scriptstyle\frac{5}{3}; - \scriptstyle\frac{\Omega_{\mathrm{m},0}}{1 - \Omega_{\mathrm{m},0}})\bigg]^{-1} \,.
     \end{mlines}
