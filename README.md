@@ -1,4 +1,4 @@
-# Doctoral Thesis
+# Thesis Template
 
 This template is deposited in the GitHub repo [MikeSWang/ThesisTemplate](https://github.com/MikeSWang/ThesisTemplate). If the link does not work it's because it is private at the moment; it will be made public after my thesis submission or viva.
 
