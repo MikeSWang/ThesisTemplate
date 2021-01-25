@@ -1,5 +1,7 @@
 # Doctoral Thesis
 
+This template is deposited in the GitHub repo [MikeSWang/ThesisTemplate](https://github.com/MikeSWang/ThesisTemplate). If the link does not work it's because it is private at the moment; it will be made public after my thesis submission or viva.
+
 ## Directory structure
 
 The thesis source files are divided into three subdirectories:
