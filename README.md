@@ -20,7 +20,7 @@ This thesis should be compiled with XeLaTeX since it allows custom fonts to be u
 ```
     latexmk -pdfxe -shell-escape -interaction=nonstopmode -file-line-error -synctex=1
 ```
-Here ``-pdfxe`` ensures a PDF is the final product compiled with XeLaTeX, ``-shell-escape`` allows the command ``\quickwordcount`` (which includes the magic command ``\write19``) to count words with the ``texcount`` program in a bash shell, and ``-synctex=1`` is optional and used for e.g. Overleaf to synchronise and link between the source code and the PDF output (compatible with certain editors and PDF viewers, e.g. on Overleaf).
+Here ``-pdfxe`` ensures a PDF is the final product compiled with XeLaTeX, ``-shell-escape`` allows the command ``\quickwordcount`` (which includes the magic command ``\write18``) to count words with the ``texcount`` program in a bash shell, and ``-synctex=1`` is optional and used for e.g. Overleaf to synchronise and link between the source code and the PDF output (compatible with certain editors and PDF viewers, e.g. on Overleaf).
 
 **In short, this template should be compilable straight away on Overleaf if you use XeLaTeX in your project settings.**
 
