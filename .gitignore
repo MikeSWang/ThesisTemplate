@@ -15,7 +15,7 @@
 
 # Output files.
 *.xdv
-*.pdf
+# *.pdf
 *.sum
 *.html
 
