@@ -1,7 +1,7 @@
 % ------------------------------------------------------------------------
 % config/profiles/frontmatter.tex
 %
-% Front matter style elements.
+% Front matter style and elements.
 % ------------------------------------------------------------------------
 
 % Define environment 'colophon'.
@@ -15,6 +15,25 @@
 \makeatother
 
 
+% Add version-printing commands.  This extracts the Git HEAD reference
+% upon each compilation with output written to file 'gitvdate.info'
+% in the root directory and processed into version mark.  Use only when
+% Git has been initialised.  Code recycled from https://tex.stackexchange.com/questions/34390/how-can-i-write-into-a-file
+
+% \makeatletter
+% \newcommand\gitdateversion{%
+%     \begingroup%
+%     \let\%\@percentchar%
+%     \expandafter\immediate\write18{
+%         git log -1 --date=format:"\%Y.\%m.\%d" --format="\%ad.\%h" %
+%         > gitvdate.info
+%     }%
+%     \endgroup%
+%     {\ttfamily\input{gitvdate.info}}\unskip%
+% }
+% \makeatother
+
+
 % Add word count tool with bash commands.  This recounts upon each
 % compilation using 'texcount' with output written to file 'wordcount.sum'
 % in the root directory and processed into a sentence, the wording of
@@ -26,10 +45,7 @@
         texcount -0 -1 -sum -merge -q #1.tex | sed 's/([^)]*)//g' | awk 'NF' %
         > wordcount.sum
     }%
-    This thesis has an estimated word count of
-    {\ttfamily\input{wordcount.sum}\unskip}
-    for the abstract, main matter and appendices.
-    Captions and footnotes are included in this count.
+    {\ttfamily\input{wordcount.sum}\unskip}%
 }
 
 

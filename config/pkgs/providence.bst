@@ -28,19 +28,19 @@
 %
 % This work consists of the file JHEP.bst.
 
-%% CHANGES made by MS Wang, Autumn/Winter 2020 (marked by ``% MSW %``):
-%% File name changed to providence.bst;
-%% Removal of full stop in initials
-%%     (use ``\relax`` to preserve hyphenated names);
-%% Single quotation marks around titles in Roman font
-%%     with punctuations outside;
-%% Collaboration not in small caps and authors still displayed;
-%% ``\bfseries`` changed to ``\sbseries``;
-%% ``ed.`` and ``eds.`` to bracketed form;
-%% Preprint with eprint formatting for article entries;
-%% Note field displayed in misc entries;
-%% URL formatting using ``\weblink{}``;
-%% Modification of the arXiv link using ``\arxiv*{}``;
+% MSW % CHANGES made by MS Wang, Autumn/Winter 2020 (marked by ``% MSW %``):
+% MSW % File name changed to providence.bst;
+% MSW % Removal of full stop in initials
+% MSW %     (use ``\relax`` to preserve hyphenated names);
+% MSW % Single quotation marks around titles in Roman font
+% MSW %     with punctuations outside;
+% MSW % Collaboration not in small caps and authors still displayed;
+% MSW % ``\bfseries`` changed to ``\sbseries``;
+% MSW % ``ed.`` and ``eds.`` to bracketed form;
+% MSW % Preprint with eprint formatting for article entries;
+% MSW % Note field displayed in misc entries;
+% MSW % URL formatting using ``\weblink{}``;
+% MSW % Modification of the arXiv link using ``\arxiv*{}``;
 
 % ISSUES outstanding:
 %% Handling of missing page number in articles (ghost commas);

@@ -1,15 +1,15 @@
 \chapter{Analysis}
 \label{chap:analysis}
 
-There are far more than \(\groupfour{1000000}\) galaxies in the \gls{BOSS} Data Release 12 analysis.
+There are far more than \(\groupfour{1000000}\) galaxies in the \gls{BOSS} Data Releases. \Rcite{Wang2020b} argues that a spherical Fourier decomposition is superior,
     \begin{equation}
-        \legendre{\ell}(\lowerh{-0.2ex}{\vu*{k} \vdot \vu*{s}}) \equiv \frac{4\pi}{2\ell + 1} \sum_{m=-\ell}^\ell \sphY{\ell m}(\lowerh{-0.2ex}{\vu*{k}}) \sphYc{\ell m}(\vu*{s}) \,.
+        \legendre{\ell}(\lowerh{-0.2ex}{\vu*{k} \vdot \vu*{s}}) \equiv \frac{4\pi}{2\ell + 1} \sum_{m=-\ell}^\ell \sphY{\ell m}(\lowerh{-0.2ex}{\vu*{k}}) \sphYc{\ell m}(\vu*{s}) \,,
     \end{equation}
-\Rcite{Wang2020b} argues that a spherical Fourier decomposition is superior. The coefficients~\(A^{\ell_1}_{\ell L}\) can be found from the identity
+and the following identity may be of use:
     \begin{equation}
-        \legendre*{\ell} \legendre*{L} \equiv \sum_{\ell' = 0}^{\min{\!\qty{\ell,L}}} \frac{2\ell + 2L - 4\ell' + 1}{2\ell + 2L - 2\ell' + 1} \frac{C_{\ell - \ell'} \mkern2mu C_{\ell'} \mkern2mu C_{L - \ell'}}{C_{\ell + L - \ell'}} \legendre*{\ell + L - 2\ell'} \,,
+        \legendre*{\ell} \legendre*{L} \equiv \sum_{\ell' = 0}^{\min{\!\qty{\ell,L}}} \frac{2\ell + 2L - 4\ell' + 1}{2\ell + 2L - 2\ell' + 1} \frac{C_{\ell - \ell'} \mkern2mu C_{\ell'} \mkern2mu C_{L - \ell'}}{C_{\ell + L - \ell'}} \legendre*{\ell + L - 2\ell'} \,.
     \end{equation}
-where the matrices~\(\mat{M}_{2i}\) are \(\mat{M}_0 = \mat{I}_3\) (the identity matrix) and
+The matrices~\(\mat{M}_{2i}\) are \(\mat{M}_0 = \mat{I}_3\) (the identity matrix) and
     \begin{equation}
     \begin{alignedat}{2}
         \mat{M}_2 &= \begin{pmatrix*}[r]
@@ -57,7 +57,7 @@ where the matrices~\(\mat{M}_{2i}\) are \(\mat{M}_0 = \mat{I}_3\) (the identity 
 \end{figure}
 }
 
-\kant*[12-13]
+\kant*[12]
 \begin{subequations}
     \begin{align}
         \Phi_{\mu\nu} &\deq \kappa_\nu \int r^2 \dd{r} \mkern1.5mu \func{w}(\fid{r}) \func{j_\mu}(\fid{r}) \func{j_\nu}(r) \func{\phi}(r) \func{\bar{n}}(z) \mkern1mu \frac{\func{b_{k_\nu}}(z)}{\func{b_{k_\nu}}(0)} \func{D_1}(z) \,, \\
@@ -76,13 +76,14 @@ Do not ignore PNG\@. Note `'\verb|\@|' used after capitalised abbreviation befor
         \toprule[1.15pt]
         Parameters & \(\lg\phi_\ast\) & \(\func*{m_\ast}(z_\mathrm{p})\) & \(\alpha\) & \(\beta\) & \(k_1\) \\
         \midrule[1pt]
-        \(z \in [\num{0.68}, \num{2.2})\) & \multirow{2}{*}{\(\measurement{-26.20}{+0.21}{-0.20}\)} & \multirow{2}{*}{\(\measurement{-5.76}{+0.09}{-0.08}\)} & \(\measurement{-3.27}{+0.17}{-0.19}\) & \(\measurement{-1.40}{+0.06}{-0.06}\) & \(\measurement{-0.10}{+0.08}{-0.09}\) \\
-        \(z \in [\num{2.2}, \num{4.0}]\) & & & \(\measurement{-2.57}{+0.08}{-0.09}\) & \(\measurement{-1.21}{+0.10}{-0.09}\) & \(\measurement{-0.37}{+0.09}{-0.09}\) \\
+        \(z \in [\num{0.68}, \num{2.2})\) & \multirow{2}{*}{\({-26.20}^{+0.21}_{-0.20}\)} & \multirow{2}{*}{\({-5.76}^{+0.09}_{-0.08}\)} & \({-3.27}^{+0.17}_{-0.19}\) & \({-1.40}^{+0.06}_{-0.06}\) & \({-0.10}^{+0.08}{-0.09}\) \\
+        \(z \in [\num{2.2}, \num{4.0}]\) & & & \({-2.57}^{+0.08}_{-0.09}\) & \({-1.21}^{+0.10}_{-0.09}\) & \({-0.37}^{+0.09}_{-0.09}\) \\
         \bottomrule[1.15pt]
     \end{tabular}
     \endgroup
 \end{table}
-\kant*[14]
+
+\kant*[14-15]
     \begin{mlines}
         \mathcal{C} \approx \frac{2}{5} \Omega_{\mathrm{m},0}^{-1} \bigg[\pi^{-1/2} \func{\Gamma}(\scriptstyle\frac{5}{6}) \func{\Gamma}(\scriptstyle\frac{5}{3}) (1 - \Omega_{\mathrm{m},0})^{-5/6} \Omega_{\mathrm{m},0}^{-2/3} \\ - \frac{1}{2} (1 - \Omega_{\mathrm{m},0})^{-3/2} \func{\tensor*[_2]{F}{_1}}(\scriptstyle\frac{2}{3}, \scriptstyle\frac{3}{2}; \scriptstyle\frac{5}{3}; - \scriptstyle\frac{\Omega_{\mathrm{m},0}}{1 - \Omega_{\mathrm{m},0}})\bigg]^{-1} \,.
     \end{mlines}

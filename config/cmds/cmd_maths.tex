@@ -23,16 +23,17 @@
 \let\narrowcheck\check
 \renewcommand{\check}[1]{\widecheck{#1}}
 
-% Adjust height of letter under diacritic.
-% E.g. ``\lowerh{-0.2ex}{\widehat{P}}``
-\newcommand{\lowerh}[2]{\raisebox{#1}{$#2$}}
-
-% Add shortcut/alias commands.
 \newcommand{\placeholder}{{%
     \vcenter{\hbox{%
         \protect\scalebox{0.5}{$\mkern2mu\bullet\mkern2mu$}%
     }}%
 }}
+
+% Adjust height of letter under diacritic.
+% E.g. ``\lowerh{-0.2ex}{\widehat{P}}``
+\newcommand{\lowerh}[2]{\raisebox{#1}{$#2$}}
+
+% Add shortcut/alias commands.
 
 \newcommand{\est}[1]{\widehat{#1}}
 \newcommand{\fid}[1]{\breve{#1}}
@@ -67,6 +68,7 @@
 }
 
 % Add/modify shortcut/alias commands.
+
 \let\geqflat\geq
 \renewcommand{\geq}{\geqslant}
 
@@ -96,10 +98,6 @@
 	}%
 }
 
-% Add/modify shortcut/alias commands.
-\newcommand{\dda}[1]{\dd[2]{#1}}
-\newcommand{\ddd}[1]{\dd[3]{#1}}
-
 % Fine-tune the transposition symbol.
 \makeatletter
 \newcommand*{\transT}{{\mathpalette\@transT{}}}
@@ -109,6 +107,7 @@
 \makeatother
 
 % Add/modify shortcut/alias commands.
+
 \newcommand{\conj}[1]{#1^\ast}
 \newcommand{\trans}[1]{#1^\transT}
 \newcommand{\herm}[1]{#1^\dagger}
@@ -116,12 +115,15 @@
 \newcommand{\conv}{\mathbin{*}}  % convolution operation,
                                  % e.g. ``f \conv g``
 
+\newcommand{\dda}[1]{\dd[2]{#1}}
+\newcommand{\ddd}[1]{\dd[3]{#1}}
+
 
 % Function(al)s and Operators
 % -------------------------------
 
 % Note the starred variants (e.g. ``\Prob*``) of the following commands
-% are for function(al)s shown without argument, e.g. 'f' rather than
+% are for function(al)s shown without an argument, e.g. 'f' rather than
 % 'f(x)', or for occasions when automatic resizing of brackets is not
 % desired.  See the content of this template (e.g. the notation glossary)
 % for examples of the following commands.
@@ -238,7 +240,6 @@
 % -----------------
 
 % Typeset matrices in bold italic (relying on package 'isomath').
-
 \newcommand{\mat}[1]{\mathsfbfit{#1}}
 
 
@@ -270,4 +271,3 @@
 % ---------------------
 
 % Add custom maths commands.
-\newcommand{\measurement}[3]{{#1}^{#2}_{#3}}  % for demo purpose

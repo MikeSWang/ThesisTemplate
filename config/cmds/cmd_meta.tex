@@ -119,7 +119,7 @@
 %% recycled from my StackExchange question: https://tex.stackexchange.com/questions/414783/is-it-possible-to-re-group-every-4-digits-in-a-number-with-siunitx-package.
 
 \ExplSyntaxOn
-    \NewDocumentCommand{\groupfour}{O{\mkern1mu} m}{
+    \NewDocumentCommand{\groupfour}{O{\mkern3mu} m}{
         \digit_groupfour:nn { #1 } { #2 }
     }
 
@@ -145,8 +145,8 @@
 \ExplSyntaxOff
 
 
-%% Add linebreak-at-comma compatible maths mode wrapper command.
-%% This helps with line breaking for a long inline maths formula.
+%% Add linebreak-at-comma compatible maths-mode wrapper command.
+%% This helps with line breaking in a long inline maths formula.
 %% Code recycled from https://tex.stackexchange.com/questions/1959/allowing-line-break-at-in-inline-math-mode
 
 \newcommand{\splitatcommas}[1]{%

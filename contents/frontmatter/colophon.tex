@@ -15,13 +15,18 @@
 
 \begin{colophon}
 
-% Drop draft version watermark.
+% Drop draft version watermark.  Consider replacing this with a Git
+% version mark if Git is enabled.  See ``\gitdateversion`` in
+% 'config/profiles/frontmatter.tex' and below.
 \ifdraftdoc
 	\textcolor{gray}{\textbf{\ttfamily\bfseries v.\today}}
-	\vfill
-\else
-    \null\vfill
 \fi
+
+\null\vfill
+
+%% Extract licence graphic dimensions.
+\newdimen\licencewidth
+\settowidth{\licencewidth}{\includegraphics[scale=0.925]{CC-BY-NC.eps}}
 
 % Drop declaration and word count.
 \begin{minipage}{\textwidth}
@@ -29,24 +34,25 @@
 
     \bigskip
 
-    {\quickwordcount{thesis}}
+    This thesis has an estimated word count of \quickwordcount{thesis} for the abstract, main matter and appendices. Captions and footnotes are included in this count.
 
-    \bigskip\bigskip\bigskip
+    \vspace{15mm}
 
-    %% Licence dimensions.
-    \newdimen\licencewidth
-    \settowidth{\licencewidth}{\includegraphics[scale=0.925]{CC-BY-NC.eps}}
-
-    \begin{minipage}[c]{\licencewidth}
-        \vspace{-3pt}\includegraphics[scale=0.925]{CC-BY-NC.eps}
+    \begin{minipage}[b]{\licencewidth}
+        \vspace{-3pt}\includegraphics[width=\licencewidth]{CC-BY-NC.eps}
     \end{minipage}%
     \hspace{1em}%
-    \begin{minipage}{\textwidth-\licencewidth-1em}
+    \begin{minipage}[b]{\textwidth-\licencewidth-1em}
         The contents of this work are licensed under a Creative Commons Attribution-NonCommercial 4.0 International License (\url{http://creativecommons.org/licenses/by-nc/4.0/}).
     \end{minipage}%
-    \par
 
-    \bigskip\smallskip
+    \vspace{5mm}
+
+    % Uncomment command definition in 'config/profiles/frontmatter.tex'
+    % before uncommenting the lines below.
+    % Compilation version\hspace{1em}\textcolor{gray!120}{\textbf{\gitdateversion}}
+
+    % \vspace{5mm}
 
     \textcopyright\ Mike Shengbo Wang \copyrightyear. Typeset with {\XeLaTeX} in the \textit{memoir} class.
 \end{minipage}

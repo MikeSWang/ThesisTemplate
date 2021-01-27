@@ -13,7 +13,7 @@
     \includegraphics[
         width=8.5cm,trim={0.5mm 0.5mm 0.5mm 0.5mm},clip
     ]{Construction}
-    \caption[Under Construction. {[Licensed under \nolinkurl{invalid/licence/example}]}]{\qts{Under Construction}. Figure taken from a fairytale book (credit: Fairy~McTale \etal).}
+    \caption[Under Construction. {[Licensed under \nolinkurl{invalid/licence/example}]}]{\qts{Under Construction}. Figure taken from a fairytale (credit: Fairy~McTale \etal).}
     \label{fig:construction}
 \end{figure}
 
@@ -31,7 +31,7 @@
         \PDF[][\delta] = A^{-{1}/{2}} \exp[- \frac{1}{2} \int \ddd{\vb*{r}_1} \ddd{\vb*{r}_2} \func{\delta}(\vb*{r}_1) \func{\xi}(\vb*{r}_1, \vb*{r}_2)^{-1} \func{\delta}(\vb*{r}_2)] \,,
         \label{eq:stats | PDF | GRF}
     \end{equation}
-where \notn{vartheta} is the \term{spherical polar angle} and does not appear, and the normalisation constant is given by
+where the \term{normalisation constant} is
     \begin{equation}
         A^{\flatfrac{1}{2}} = \int \Dm{\delta} \exp[- \frac{1}{2} \int \ddd{\vb*{r}_1} \ddd{\vb*{r}_2} \func{\delta}(\vb*{r}_1) \func{\xi}(\vb*{r}_1, \vb*{r}_2)^{-1} \func{\delta}(\vb*{r}_2)] \,.
     \end{equation}
@@ -48,9 +48,9 @@ Here \(\Dm{\delta} \deq \lim_{N \to \infty} \prod_{i=1}^N \flatfrac{\dd{\func{\d
     \end{equation}
 may be replaced by its volume average,
     \begin{equation}
-        \bar{\digamma} \deq \int_V \ddd{\vb*{r}} \func{\digamma}[\func{\delta}(\vb*{r})] \,,
+        \bar{\digamma} \deq \int_V \ddd{\vb*{r}} \func{\digamma}[\func{\delta}(\vb*{r})] \,.
     \end{equation}
-as long as the volume~\(V\) provides a fair sample of the field~\(\delta\). The shot noise power will add to the underlying clustering power spectrum \bref[see ][ for an illustration of Poisson sampling]{fig:construction}.
+The shot noise power will add to the underlying clustering power spectrum \bref[see ][ for an illustration of Poisson sampling]{fig:construction}.
     \begin{align}
         \MoveEqLeft[1] \expval{\func{\Phi}(\vb*{k}_1) \func{\Phi}(\vb*{k}_2) \func{\Phi}(\vb*{k}_3)} \nonumber \\
         &= (2\pi)^3 f_\mathrm{NL} \int \frac{\ddd{\vb*{q}_1}}{(2\pi)^3} \frac{\ddd{\vb*{q}_2}}{(2\pi)^3} \dirac(\vb*{q}_1 + \vb*{q}_2 - \vb*{k}_3) \Big[\ev{\func{\Phi_\mathrm{G}}(\vb*{k}_1) \func{\Phi_\mathrm{G}}(\vb*{k}_2) \func{\Phi_\mathrm{G}}(\vb*{q}_1) \func{\Phi_\mathrm{G}}(\vb*{q}_2)} \nonumber \\
