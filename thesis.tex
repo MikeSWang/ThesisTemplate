@@ -114,11 +114,11 @@
 \bibliographystyle{providence}
 \bibliography{publications,software}
 
-\ifcompleted
-    % Drop an insert for standalone acknowledgements (if any).  The file
-    % shown below is not in this template and the command has no effect.
-    \InputIfFileExists{contents/backmatter/acknowledgements}{}{}
+% Drop an insert for standalone acknowledgements (if any).  The file
+% shown below is not in this template and the command has no effect.
+\InputIfFileExists{contents/backmatter/acknowledgements}{}{}
 
+\ifcompleted
     % Append any file attachments, e.g. the ethics certificate and form.
     \input{contents/backmatter/embedded_file}
 \fi
