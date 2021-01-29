@@ -11,6 +11,7 @@
 *.slo
 *.sls
 *.synctex.gz
+*.synctex(busy)
 *.toc
 
 # Output files.
