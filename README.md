@@ -35,7 +35,7 @@ The documentation is really in the source files themselves; there are a lot of c
 
 ## Alternative thesis templates/examples
 
-The truth is, there are a few theses/templates that I personally like but chose not to use: the first is [this thesis](http://aturon.github.io/academic/turon-thesis.pdf), an examplar of the [``classicthesis`` template](https://ctan.org/pkg/classicthesis?lang=en); the second example is [this thesis](https://linyangchen.files.wordpress.com/2015/10/lin_yangchen_phd_thesis.pdf), where the author happens to use a font I adore (for typesetting poems), 'IMFell'; the third is ['University of Bristol Thesis Template'](https://www.overleaf.com/latex/templates/university-of-bristol-thesis-template/kzqrfvyxxcdm), which is so far the best one I have seen in the thesis template library on Overleaf.
+The truth is, there are a few theses/templates that I personally like but chose not to use: the first is [this thesis](http://aturon.github.io/academic/turon-thesis.pdf), an exemplar of the [``classicthesis`` template](https://ctan.org/pkg/classicthesis?lang=en); the second example is [this thesis](https://linyangchen.files.wordpress.com/2015/10/lin_yangchen_phd_thesis.pdf), where the author happens to use a font I adore (for typesetting poems), 'IMFell'; the third is ['University of Bristol Thesis Template'](https://www.overleaf.com/latex/templates/university-of-bristol-thesis-template/kzqrfvyxxcdm), which is so far the best one I have seen in the thesis template library on Overleaf.
 
 
 ## Copyright
