@@ -21,7 +21,7 @@ Since the compilation of LaTeX files is usually iterative (e.g. the bibliography
 
 This thesis should be compiled with XeLaTeX since it allows custom fonts to be used with the help of the (super-)package ``fontspec``, and it is more Unicode-friendly.  The configuration file, [``.latexmkrc``](.latexmkrc), tells ``latexmk`` the specifics for compiling your source files, e.g. where to look for local packages (e.g. file extensions ``.sty``, ``.bst`` etc.) and whether certain compilations need to be performed (e.g. for the ``glossaries-extra`` package with the ``perl`` program).  The [``.latexmkrc``](.latexmkrc) in this template is pre-configured and is platform-independent.  The command-line command used to compile this template is:
 ```
-    latexmk -pdfxe -shell-escape -interaction=nonstopmode -file-line-error -synctex=1
+latexmk -pdfxe -shell-escape -interaction=nonstopmode -file-line-error -synctex=1
 ```
 Here ``-pdfxe`` ensures a PDF is the final product compiled with XeLaTeX; ``-shell-escape`` allows the commands ``\gitdateversion`` and ``\quickwordcount`` (which employ the magic command ``\write18``) to extract ``git`` ``HEAD`` reference (like a version mark) and count words with the ``texcount`` program in a bash shell; and ``-synctex=1`` is optional and used (by e.g. Overleaf) to synchronise and link between the source code and the PDF output (compatible with certain editors and PDF viewers, e.g. on Overleaf).
 
